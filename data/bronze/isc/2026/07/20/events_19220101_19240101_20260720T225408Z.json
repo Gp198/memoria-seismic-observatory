@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1922-01-01T00:00:00",
+    "endtime": "1924-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n912047|1922-10-20T20:22:48.000|37.0000|-10.0000||ISS|ISS|ISS|1959208||||Azores-Cape St. Vincent Ridge|earthquake\n911365|1923-05-11T08:42:40.000|41.5000|-7.0000||ISS|ISS|ISS|1958443||||Portugal|earthquake\n911372|1923-05-17T10:36:54.000|35.0000|-5.0000||ISS|ISS|ISS|1958450||||Strait of Gibraltar|earthquake\n911699|1923-10-19T09:02:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958822||||Strait of Gibraltar|earthquake\n911749|1923-11-24T07:54:58.000|37.0000|-7.5000||ISS|ISS|ISS|1958877||||Portugal|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n912047|1922-10-20T20:22:48.000|37.0000|-10.0000||ISS|ISS|ISS|1959208||||Azores-Cape St. Vincent Ridge|earthquake\n911365|1923-05-11T08:42:40.000|41.5000|-7.0000||ISS|ISS|ISS|1958443||||Portugal|earthquake\n911372|1923-05-17T10:36:54.000|35.0000|-5.0000||ISS|ISS|ISS|1958450||||Strait of Gibraltar|earthquake\n911699|1923-10-19T09:02:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958822||||Strait of Gibraltar|earthquake\n911749|1923-11-24T07:54:58.000|37.0000|-7.5000||ISS|ISS|ISS|1958877||||Portugal|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 7,
+  "record_count": 5,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1922-01-01T00%3A00%3A00&endtime=1924-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1930-01-01T00:00:00",
+    "endtime": "1932-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n907253|1930-03-04T13:06:45.000|37.5000|-11.5000||ISS|ISS|ISS|1953433||||Azores-Cape St. Vincent Ridge|earthquake\n907260|1930-03-07T06:41:00.000|32.0000|-11.5000|35.0|GUTE|ISS|ISS|1953443|MS|5.60|PAS|Madeira Islands region|earthquake\n907539|1930-08-09T18:09:26.000|34.0000|-5.0000|35.0|GUTE|ISS|ISS|1953784|MS|5.60|PAS|Morocco|earthquake\n907540|1930-08-09T21:54:30.000|33.6000|-6.2000||ISS|ISS|ISS|1953786||||Morocco|earthquake\n907543|1930-08-13T03:19:47.000|33.6000|-6.2000||ISS|ISS|ISS|1953789||||Morocco|earthquake\n907655|1930-10-19T02:43:03.000|35.0000|-5.0000||ISS|ISS|ISS|1953928||||Strait of Gibraltar|earthquake\n906785|1931-05-20T02:22:52.931|37.7947|-16.1682|10.0|ISC|ISC|ISC|605951939|MS|7.17|ISC|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# CENT      Centennial Earthquake Catalog                                                    U.S.A.\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n907253|1930-03-04T13:06:45.000|37.5000|-11.5000||ISS|ISS|ISS|1953433||||Azores-Cape St. Vincent Ridge|earthquake\n907260|1930-03-07T06:41:00.000|32.0000|-11.5000|35.0|GUTE|ISS|ISS|1953443|MS|5.60|PAS|Madeira Islands region|earthquake\n907539|1930-08-09T18:09:26.000|34.0000|-5.0000|35.0|GUTE|ISS|ISS|1953784|MS|5.60|PAS|Morocco|earthquake\n907540|1930-08-09T21:54:30.000|33.6000|-6.2000||ISS|ISS|ISS|1953786||||Morocco|earthquake\n907543|1930-08-13T03:19:47.000|33.6000|-6.2000||ISS|ISS|ISS|1953789||||Morocco|earthquake\n907655|1930-10-19T02:43:03.000|35.0000|-5.0000||ISS|ISS|ISS|1953928||||Strait of Gibraltar|earthquake\n906785|1931-05-20T02:22:52.931|37.7947|-16.1682|10.0|ISC|ISC|ISC|605951939|MS|7.17|ISC|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# CENT      Centennial Earthquake Catalog                                                    U.S.A.\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 11,
+  "record_count": 7,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1930-01-01T00%3A00%3A00&endtime=1932-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

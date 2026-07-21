@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1956-01-01T00:00:00",
+    "endtime": "1958-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n887778|1956-01-06T05:43:39.887|36.2831|-11.2268|15.0|ISC|ISC|ISC|605955779|M|5.80|ROM|Azores-Cape St. Vincent Ridge|earthquake\n888042|1956-03-09T04:08:00.000|36.6300|-9.5500|100.0|ALI|ISS|ISS|1921768||||West of Gibraltar|earthquake\n888562|1956-08-07T22:01:21.000|36.5000|-9.4000|75.0|ALI|ISS|ISS|1922646||||West of Gibraltar|earthquake\n888596|1956-08-16T02:09:39.851|36.7337|-8.5612|15.0|ISC|ISC|ISC|605956005|MS|4.70|ISC|West of Gibraltar|earthquake\n885934|1957-02-10T19:39:24.000|36.8000|-10.8000||LIS|ISS|ISS|1918556||||Azores-Cape St. Vincent Ridge|earthquake\n886598|1957-05-25T16:21:40.000|42.8000|-15.3000||BCIS|ISS|ISS|1919566|M|4.25|MOS|North Atlantic Ocean|earthquake\n886852|1957-07-15T09:36:35.033|36.3562|-7.2717|15.0|ISC|ISC|ISC|605956384||||Strait of Gibraltar|earthquake\n886916|1957-07-26T02:42:01.000|36.2700|-7.9000||ALI|ISS|ISS|1920069||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n887778|1956-01-06T05:43:39.887|36.2831|-11.2268|15.0|ISC|ISC|ISC|605955779|M|5.80|ROM|Azores-Cape St. Vincent Ridge|earthquake\n888042|1956-03-09T04:08:00.000|36.6300|-9.5500|100.0|ALI|ISS|ISS|1921768||||West of Gibraltar|earthquake\n888562|1956-08-07T22:01:21.000|36.5000|-9.4000|75.0|ALI|ISS|ISS|1922646||||West of Gibraltar|earthquake\n888596|1956-08-16T02:09:39.851|36.7337|-8.5612|15.0|ISC|ISC|ISC|605956005|MS|4.70|ISC|West of Gibraltar|earthquake\n885934|1957-02-10T19:39:24.000|36.8000|-10.8000||LIS|ISS|ISS|1918556||||Azores-Cape St. Vincent Ridge|earthquake\n886598|1957-05-25T16:21:40.000|42.8000|-15.3000||BCIS|ISS|ISS|1919566|M|4.25|MOS|North Atlantic Ocean|earthquake\n886852|1957-07-15T09:36:35.033|36.3562|-7.2717|15.0|ISC|ISC|ISC|605956384||||Strait of Gibraltar|earthquake\n886916|1957-07-26T02:42:01.000|36.2700|-7.9000||ALI|ISS|ISS|1920069||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 11,
+  "record_count": 8,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1956-01-01T00%3A00%3A00&endtime=1958-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

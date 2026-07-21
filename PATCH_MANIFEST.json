@@ -1,0 +1,18 @@
+{
+  "version": "0.6.2",
+  "name": "Assistant light-theme contrast hotfix",
+  "rebuild_required": false,
+  "changed_files": [
+    "APPLY_PATCH.cmd",
+    "MIGRATION_v0.6.2.md",
+    "app/streamlit_app.py",
+    "docs/assistant_theme_hotfix_v0.6.2.md",
+    "pyproject.toml",
+    "tests/test_assistant_theme_v062.py"
+  ],
+  "validation": {
+    "compileall": "passed",
+    "pytest": "15 passed",
+    "streamlit_visual_runtime": "not available in build environment"
+  }
+}

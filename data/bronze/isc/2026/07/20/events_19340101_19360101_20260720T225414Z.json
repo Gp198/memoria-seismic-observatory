@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1934-01-01T00:00:00",
+    "endtime": "1936-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n904957|1934-05-31T13:22:35.000|34.5000|-5.5000||ISS|ISS|ISS|1949721||||Morocco|earthquake\n905270|1934-11-12T08:31:57.000|38.0000|-8.5000|35.0|GUTE|ISS|ISS|1950215|MS|5.60|PAS|Portugal|earthquake\n904594|1935-10-18T07:54:20.000|35.5000|-5.5000||ISS|ISS|ISS|1949105||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n904957|1934-05-31T13:22:35.000|34.5000|-5.5000||ISS|ISS|ISS|1949721||||Morocco|earthquake\n905270|1934-11-12T08:31:57.000|38.0000|-8.5000|35.0|GUTE|ISS|ISS|1950215|MS|5.60|PAS|Portugal|earthquake\n904594|1935-10-18T07:54:20.000|35.5000|-5.5000||ISS|ISS|ISS|1949105||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 5,
+  "record_count": 3,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1934-01-01T00%3A00%3A00&endtime=1936-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

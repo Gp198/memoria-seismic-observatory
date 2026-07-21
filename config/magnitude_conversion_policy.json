@@ -1,0 +1,6 @@
+{
+  "policy_version": "pilot-v1",
+  "review_status": "awaiting_seismologist_review",
+  "description": "Optional affine conversions to the MEMÓRIA operational comparison scale. Empty by default to avoid inventing unreviewed relationships.",
+  "rules": {}
+}

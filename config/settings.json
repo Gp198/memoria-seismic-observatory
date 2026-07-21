@@ -1,0 +1,11 @@
+{
+  "project_name": "MEM\u00d3RIA \u2014 Portuguese Seismic Memory Observatory",
+  "domain_version": "pilot-v0.1",
+  "default_window_days": 90,
+  "minimum_events_for_completeness": 50,
+  "duplicate_time_seconds": 90,
+  "duplicate_distance_km": 35,
+  "duplicate_magnitude_delta": 0.6,
+  "similarity_exclusion_days": 365,
+  "request_timeout_seconds": 45
+}

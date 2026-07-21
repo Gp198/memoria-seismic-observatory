@@ -1,0 +1,2 @@
+[console_scripts]
+memoria = src.pipeline:main

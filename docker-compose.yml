@@ -1,0 +1,10 @@
+services:
+  memoria:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    environment:
+      MEMORIA_USER_AGENT: MEMORIA-Seismic-Observatory/0.1 local-docker

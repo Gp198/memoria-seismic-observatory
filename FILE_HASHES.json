@@ -1,0 +1,8 @@
+{
+  "APPLY_PATCH.cmd": "c727cce6c2bdc87d44c6f896f8f7c3bb7672ede7501e2c1bd6e8870a9e58bc13",
+  "MIGRATION_v0.6.2.md": "c0621ab22e890b7d37eae42e0b77406ee82943df7d973b5a06f3980ab40e1bc9",
+  "app/streamlit_app.py": "f75efb041144da289d06ccc5eb65688a19956bea9a4aec88f79885bfbd48480b",
+  "docs/assistant_theme_hotfix_v0.6.2.md": "1e258f9f0dc502d06caa7973331cc84052cdf2cdfd6ba145d2bffecfef175f60",
+  "pyproject.toml": "3e1ebe5451c616ceb3b121dea4d26f650dbb4ef6a1da6008434d80c3efd67b36",
+  "tests/test_assistant_theme_v062.py": "43f124d3416fd312ce0f06a5b196b6c2aa93c32f773d0826e264352c3224d55b"
+}

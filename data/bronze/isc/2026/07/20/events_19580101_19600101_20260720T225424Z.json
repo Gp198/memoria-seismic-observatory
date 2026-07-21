@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1958-01-01T00:00:00",
+    "endtime": "1960-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n883662|1958-01-07T14:34:41.000|38.2000|-8.0000||ALI|ISS|ISS|1914854||||Portugal|earthquake\n884291|1958-04-30T14:08:02.509|37.1398|-14.1933|15.0|ISC|ISC|ISC|605956757|MS|5.26|ISC|Azores-Cape St. Vincent Ridge|earthquake\n884726|1958-07-11T14:03:06.000|36.0000|-8.0000||BCIS|ISS|ISS|1916572||||West of Gibraltar|earthquake\n881428|1959-02-19T06:23:06.000|37.5000|-7.0000||BCIS|ISS|ISS|1910733||||Portugal|earthquake\n881453|1959-02-23T10:26:00.000|38.5000|-11.0000||BCIS|ISS|ISS|1910775||||Azores-Cape St. Vincent Ridge|earthquake\n882536|1959-07-30T00:00:42.000|36.7500|-9.7500||BCIS|ISS|ISS|1912782||||West of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n883662|1958-01-07T14:34:41.000|38.2000|-8.0000||ALI|ISS|ISS|1914854||||Portugal|earthquake\n884291|1958-04-30T14:08:02.509|37.1398|-14.1933|15.0|ISC|ISC|ISC|605956757|MS|5.26|ISC|Azores-Cape St. Vincent Ridge|earthquake\n884726|1958-07-11T14:03:06.000|36.0000|-8.0000||BCIS|ISS|ISS|1916572||||West of Gibraltar|earthquake\n881428|1959-02-19T06:23:06.000|37.5000|-7.0000||BCIS|ISS|ISS|1910733||||Portugal|earthquake\n881453|1959-02-23T10:26:00.000|38.5000|-11.0000||BCIS|ISS|ISS|1910775||||Azores-Cape St. Vincent Ridge|earthquake\n882536|1959-07-30T00:00:42.000|36.7500|-9.7500||BCIS|ISS|ISS|1912782||||West of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 9,
+  "record_count": 6,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1958-01-01T00%3A00%3A00&endtime=1960-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

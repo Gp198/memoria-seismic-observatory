@@ -1,0 +1,92 @@
+{
+  "type": "FeatureCollection",
+  "name": "MEMORIA pilot tectonic domains",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "domain_id": "SW_IBERIAN_MARGIN",
+        "name": "Margem Sudoeste Ib\u00e9rica",
+        "version": "pilot-v0.1",
+        "authority": "analytical approximation",
+        "warning": "Not an official seismogenic-source boundary."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -14.8,
+              34.0
+            ],
+            [
+              -7.0,
+              34.0
+            ],
+            [
+              -7.0,
+              38.4
+            ],
+            [
+              -9.1,
+              39.0
+            ],
+            [
+              -11.8,
+              39.3
+            ],
+            [
+              -14.8,
+              38.3
+            ],
+            [
+              -14.8,
+              34.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "domain_id": "LOWER_TAGUS_VALLEY",
+        "name": "Vale Inferior do Tejo",
+        "version": "pilot-v0.1",
+        "authority": "analytical approximation",
+        "warning": "Not an official seismogenic-source boundary."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -9.65,
+              38.35
+            ],
+            [
+              -8.55,
+              38.35
+            ],
+            [
+              -8.3,
+              39.45
+            ],
+            [
+              -9.1,
+              39.7
+            ],
+            [
+              -9.7,
+              39.1
+            ],
+            [
+              -9.65,
+              38.35
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1940-01-01T00:00:00",
+    "endtime": "1942-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n901222|1940-03-05T01:50:23.000|36.8000|-5.3000||ISS|ISS|ISS|1943634||||Strait of Gibraltar|earthquake\n901098|1941-11-25T18:03:58.653|37.4460|-18.9532|10.0|ISC|ISC|ISC|605952581|Mw|8.10|P&S|Azores-Cape St. Vincent Ridge|earthquake\n901099|1941-11-26T01:06:06.000|37.4000|-19.0000||ISS|ISS|ISS|1943429||||Azores-Cape St. Vincent Ridge|earthquake\n901134|1941-12-27T18:17:27.000|36.0000|-10.5000|60.0|GUTE|ISS|ISS|1943486|MS|6.75|PAS|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# CENT      Centennial Earthquake Catalog                                                    U.S.A.\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n901222|1940-03-05T01:50:23.000|36.8000|-5.3000||ISS|ISS|ISS|1943634||||Strait of Gibraltar|earthquake\n901098|1941-11-25T18:03:58.653|37.4460|-18.9532|10.0|ISC|ISC|ISC|605952581|Mw|8.10|P&S|Azores-Cape St. Vincent Ridge|earthquake\n901099|1941-11-26T01:06:06.000|37.4000|-19.0000||ISS|ISS|ISS|1943429||||Azores-Cape St. Vincent Ridge|earthquake\n901134|1941-12-27T18:17:27.000|36.0000|-10.5000|60.0|GUTE|ISS|ISS|1943486|MS|6.75|PAS|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# CENT      Centennial Earthquake Catalog                                                    U.S.A.\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 8,
+  "record_count": 4,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1940-01-01T00%3A00%3A00&endtime=1942-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1924-01-01T00:00:00",
+    "endtime": "1926-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n910850|1924-03-02T06:45:40.000|37.5000|-9.0000||ISS|ISS|ISS|1957841||||Portugal|earthquake\n911024|1924-07-11T23:40:30.000|36.0000|-19.0000||ISS|ISS|ISS|1958044||||Azores-Cape St. Vincent Ridge|earthquake\n911136|1924-09-22T22:04:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958176||||Strait of Gibraltar|earthquake\n911160|1924-10-15T04:15:42.000|37.0000|-10.0000||ISS|ISS|ISS|1958205||||Azores-Cape St. Vincent Ridge|earthquake\n911239|1924-12-25T17:53:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958292||||Strait of Gibraltar|earthquake\n910311|1925-01-02T16:40:30.000|36.0000|-5.0000||ISS|ISS|ISS|1957203||||Strait of Gibraltar|earthquake\n910444|1925-04-14T15:16:51.000|44.0000|-20.0000||ISS|ISS|ISS|1957356||||Northern Mid-Atlantic Ridge|earthquake\n910451|1925-04-17T05:41:57.000|37.0000|-6.5000||ISS|ISS|ISS|1957364||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n910850|1924-03-02T06:45:40.000|37.5000|-9.0000||ISS|ISS|ISS|1957841||||Portugal|earthquake\n911024|1924-07-11T23:40:30.000|36.0000|-19.0000||ISS|ISS|ISS|1958044||||Azores-Cape St. Vincent Ridge|earthquake\n911136|1924-09-22T22:04:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958176||||Strait of Gibraltar|earthquake\n911160|1924-10-15T04:15:42.000|37.0000|-10.0000||ISS|ISS|ISS|1958205||||Azores-Cape St. Vincent Ridge|earthquake\n911239|1924-12-25T17:53:00.000|36.0000|-5.0000||ISS|ISS|ISS|1958292||||Strait of Gibraltar|earthquake\n910311|1925-01-02T16:40:30.000|36.0000|-5.0000||ISS|ISS|ISS|1957203||||Strait of Gibraltar|earthquake\n910444|1925-04-14T15:16:51.000|44.0000|-20.0000||ISS|ISS|ISS|1957356||||Northern Mid-Atlantic Ridge|earthquake\n910451|1925-04-17T05:41:57.000|37.0000|-6.5000||ISS|ISS|ISS|1957364||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 10,
+  "record_count": 8,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1924-01-01T00%3A00%3A00&endtime=1926-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

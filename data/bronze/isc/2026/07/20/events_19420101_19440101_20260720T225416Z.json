@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1942-01-01T00:00:00",
+    "endtime": "1944-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n900304|1942-05-29T05:32:03.000|38.0000|-19.0000|35.0|GUTE|ISS|ISS|1942054|MS|5.60|PAS|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n900304|1942-05-29T05:32:03.000|38.0000|-19.0000|35.0|GUTE|ISS|ISS|1942054|MS|5.60|PAS|Azores-Cape St. Vincent Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 3,
+  "record_count": 1,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1942-01-01T00%3A00%3A00&endtime=1944-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

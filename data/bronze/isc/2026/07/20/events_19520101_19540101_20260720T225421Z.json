@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1952-01-01T00:00:00",
+    "endtime": "1954-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n892891|1952-05-12T19:34:32.784|35.5439|-6.7702|15.0|ISC|ISC|ISC|605954203||||Strait of Gibraltar|earthquake\n893038|1952-06-17T22:37:27.481|36.7677|-11.4078|15.0|ISC|ISC|ISC|605954264||||Azores-Cape St. Vincent Ridge|earthquake\n891458|1953-01-26T00:11:40.000|36.5000|-10.0000||BCIS|ISS|ISS|1927319||||Azores-Cape St. Vincent Ridge|earthquake\n891550|1953-03-12T19:26:02.000|36.3000|-10.1000||BCIS|ISS|ISS|1927442||||Azores-Cape St. Vincent Ridge|earthquake\n892210|1953-11-27T20:00:50.000|37.0000|-5.2500||BCIS|ISS|ISS|1928513||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n892891|1952-05-12T19:34:32.784|35.5439|-6.7702|15.0|ISC|ISC|ISC|605954203||||Strait of Gibraltar|earthquake\n893038|1952-06-17T22:37:27.481|36.7677|-11.4078|15.0|ISC|ISC|ISC|605954264||||Azores-Cape St. Vincent Ridge|earthquake\n891458|1953-01-26T00:11:40.000|36.5000|-10.0000||BCIS|ISS|ISS|1927319||||Azores-Cape St. Vincent Ridge|earthquake\n891550|1953-03-12T19:26:02.000|36.3000|-10.1000||BCIS|ISS|ISS|1927442||||Azores-Cape St. Vincent Ridge|earthquake\n892210|1953-11-27T20:00:50.000|37.0000|-5.2500||BCIS|ISS|ISS|1928513||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISC       International Seismological Centre                                               United Kingdom\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 8,
+  "record_count": 5,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1952-01-01T00%3A00%3A00&endtime=1954-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

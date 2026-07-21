@@ -1,0 +1,616 @@
+{
+  "completed": {
+    "2008-01-01T00:00:00+00:00__2008-04-01T00:00:00+00:00": {
+      "start": "2008-01-01T00:00:00+00:00",
+      "end": "2008-04-01T00:00:00+00:00",
+      "records": 759,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20080101_20080401_20260721T095606Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2008-04-01T00:00:00+00:00__2008-07-01T00:00:00+00:00": {
+      "start": "2008-04-01T00:00:00+00:00",
+      "end": "2008-07-01T00:00:00+00:00",
+      "records": 1430,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20080401_20080701_20260721T095618Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2008-07-01T00:00:00+00:00__2008-10-01T00:00:00+00:00": {
+      "start": "2008-07-01T00:00:00+00:00",
+      "end": "2008-10-01T00:00:00+00:00",
+      "records": 458,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20080701_20081001_20260721T095623Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2008-10-01T00:00:00+00:00__2009-01-01T00:00:00+00:00": {
+      "start": "2008-10-01T00:00:00+00:00",
+      "end": "2009-01-01T00:00:00+00:00",
+      "records": 1137,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20081001_20090101_20260721T095633Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2009-01-01T00:00:00+00:00__2009-04-01T00:00:00+00:00": {
+      "start": "2009-01-01T00:00:00+00:00",
+      "end": "2009-04-01T00:00:00+00:00",
+      "records": 1251,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20090101_20090401_20260721T095644Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2009-04-01T00:00:00+00:00__2009-07-01T00:00:00+00:00": {
+      "start": "2009-04-01T00:00:00+00:00",
+      "end": "2009-07-01T00:00:00+00:00",
+      "records": 1256,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20090401_20090701_20260721T095656Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2009-07-01T00:00:00+00:00__2009-10-01T00:00:00+00:00": {
+      "start": "2009-07-01T00:00:00+00:00",
+      "end": "2009-10-01T00:00:00+00:00",
+      "records": 1620,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20090701_20091001_20260721T095710Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2009-10-01T00:00:00+00:00__2010-01-01T00:00:00+00:00": {
+      "start": "2009-10-01T00:00:00+00:00",
+      "end": "2010-01-01T00:00:00+00:00",
+      "records": 1172,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20091001_20100101_20260721T095721Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2010-01-01T00:00:00+00:00__2010-04-01T00:00:00+00:00": {
+      "start": "2010-01-01T00:00:00+00:00",
+      "end": "2010-04-01T00:00:00+00:00",
+      "records": 788,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20100101_20100401_20260721T095730Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2010-04-01T00:00:00+00:00__2010-07-01T00:00:00+00:00": {
+      "start": "2010-04-01T00:00:00+00:00",
+      "end": "2010-07-01T00:00:00+00:00",
+      "records": 1556,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20100401_20100701_20260721T095744Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2010-07-01T00:00:00+00:00__2010-10-01T00:00:00+00:00": {
+      "start": "2010-07-01T00:00:00+00:00",
+      "end": "2010-10-01T00:00:00+00:00",
+      "records": 1464,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20100701_20101001_20260721T095758Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2010-10-01T00:00:00+00:00__2011-01-01T00:00:00+00:00": {
+      "start": "2010-10-01T00:00:00+00:00",
+      "end": "2011-01-01T00:00:00+00:00",
+      "records": 1031,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20101001_20110101_20260721T095809Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2011-01-01T00:00:00+00:00__2011-04-01T00:00:00+00:00": {
+      "start": "2011-01-01T00:00:00+00:00",
+      "end": "2011-04-01T00:00:00+00:00",
+      "records": 906,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20110101_20110401_20260721T095818Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2011-04-01T00:00:00+00:00__2011-07-01T00:00:00+00:00": {
+      "start": "2011-04-01T00:00:00+00:00",
+      "end": "2011-07-01T00:00:00+00:00",
+      "records": 1259,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20110401_20110701_20260721T095832Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2011-07-01T00:00:00+00:00__2011-10-01T00:00:00+00:00": {
+      "start": "2011-07-01T00:00:00+00:00",
+      "end": "2011-10-01T00:00:00+00:00",
+      "records": 1197,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20110701_20111001_20260721T095846Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2011-10-01T00:00:00+00:00__2012-01-01T00:00:00+00:00": {
+      "start": "2011-10-01T00:00:00+00:00",
+      "end": "2012-01-01T00:00:00+00:00",
+      "records": 991,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20111001_20120101_20260721T095856Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2012-01-01T00:00:00+00:00__2012-04-01T00:00:00+00:00": {
+      "start": "2012-01-01T00:00:00+00:00",
+      "end": "2012-04-01T00:00:00+00:00",
+      "records": 1236,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20120101_20120401_20260721T095909Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2012-04-01T00:00:00+00:00__2012-07-01T00:00:00+00:00": {
+      "start": "2012-04-01T00:00:00+00:00",
+      "end": "2012-07-01T00:00:00+00:00",
+      "records": 1073,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20120401_20120701_20260721T095920Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2012-07-01T00:00:00+00:00__2012-10-01T00:00:00+00:00": {
+      "start": "2012-07-01T00:00:00+00:00",
+      "end": "2012-10-01T00:00:00+00:00",
+      "records": 705,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20120701_20121001_20260721T095927Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2012-10-01T00:00:00+00:00__2013-01-01T00:00:00+00:00": {
+      "start": "2012-10-01T00:00:00+00:00",
+      "end": "2013-01-01T00:00:00+00:00",
+      "records": 569,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20121001_20130101_20260721T095934Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2013-01-01T00:00:00+00:00__2013-04-01T00:00:00+00:00": {
+      "start": "2013-01-01T00:00:00+00:00",
+      "end": "2013-04-01T00:00:00+00:00",
+      "records": 531,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20130101_20130401_20260721T095939Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2013-04-01T00:00:00+00:00__2013-07-01T00:00:00+00:00": {
+      "start": "2013-04-01T00:00:00+00:00",
+      "end": "2013-07-01T00:00:00+00:00",
+      "records": 588,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20130401_20130701_20260721T095945Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2013-07-01T00:00:00+00:00__2013-10-01T00:00:00+00:00": {
+      "start": "2013-07-01T00:00:00+00:00",
+      "end": "2013-10-01T00:00:00+00:00",
+      "records": 644,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20130701_20131001_20260721T095951Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2013-10-01T00:00:00+00:00__2014-01-01T00:00:00+00:00": {
+      "start": "2013-10-01T00:00:00+00:00",
+      "end": "2014-01-01T00:00:00+00:00",
+      "records": 657,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20131001_20140101_20260721T095958Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2014-01-01T00:00:00+00:00__2014-04-01T00:00:00+00:00": {
+      "start": "2014-01-01T00:00:00+00:00",
+      "end": "2014-04-01T00:00:00+00:00",
+      "records": 566,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20140101_20140401_20260721T100004Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2014-04-01T00:00:00+00:00__2014-07-01T00:00:00+00:00": {
+      "start": "2014-04-01T00:00:00+00:00",
+      "end": "2014-07-01T00:00:00+00:00",
+      "records": 685,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20140401_20140701_20260721T100011Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2014-07-01T00:00:00+00:00__2014-10-01T00:00:00+00:00": {
+      "start": "2014-07-01T00:00:00+00:00",
+      "end": "2014-10-01T00:00:00+00:00",
+      "records": 742,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20140701_20141001_20260721T100018Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2014-10-01T00:00:00+00:00__2015-01-01T00:00:00+00:00": {
+      "start": "2014-10-01T00:00:00+00:00",
+      "end": "2015-01-01T00:00:00+00:00",
+      "records": 526,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20141001_20150101_20260721T100024Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2015-01-01T00:00:00+00:00__2015-04-01T00:00:00+00:00": {
+      "start": "2015-01-01T00:00:00+00:00",
+      "end": "2015-04-01T00:00:00+00:00",
+      "records": 488,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20150101_20150401_20260721T100030Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2015-04-01T00:00:00+00:00__2015-07-01T00:00:00+00:00": {
+      "start": "2015-04-01T00:00:00+00:00",
+      "end": "2015-07-01T00:00:00+00:00",
+      "records": 558,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20150401_20150701_20260721T100036Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2015-07-01T00:00:00+00:00__2015-10-01T00:00:00+00:00": {
+      "start": "2015-07-01T00:00:00+00:00",
+      "end": "2015-10-01T00:00:00+00:00",
+      "records": 616,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20150701_20151001_20260721T100042Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2015-10-01T00:00:00+00:00__2016-01-01T00:00:00+00:00": {
+      "start": "2015-10-01T00:00:00+00:00",
+      "end": "2016-01-01T00:00:00+00:00",
+      "records": 739,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20151001_20160101_20260721T100050Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2016-01-01T00:00:00+00:00__2016-04-01T00:00:00+00:00": {
+      "start": "2016-01-01T00:00:00+00:00",
+      "end": "2016-04-01T00:00:00+00:00",
+      "records": 523,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20160101_20160401_20260721T100055Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2016-04-01T00:00:00+00:00__2016-07-01T00:00:00+00:00": {
+      "start": "2016-04-01T00:00:00+00:00",
+      "end": "2016-07-01T00:00:00+00:00",
+      "records": 602,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20160401_20160701_20260721T100101Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2016-07-01T00:00:00+00:00__2016-10-01T00:00:00+00:00": {
+      "start": "2016-07-01T00:00:00+00:00",
+      "end": "2016-10-01T00:00:00+00:00",
+      "records": 603,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20160701_20161001_20260721T100108Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2016-10-01T00:00:00+00:00__2017-01-01T00:00:00+00:00": {
+      "start": "2016-10-01T00:00:00+00:00",
+      "end": "2017-01-01T00:00:00+00:00",
+      "records": 563,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20161001_20170101_20260721T100114Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2017-01-01T00:00:00+00:00__2017-04-01T00:00:00+00:00": {
+      "start": "2017-01-01T00:00:00+00:00",
+      "end": "2017-04-01T00:00:00+00:00",
+      "records": 625,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20170101_20170401_20260721T100121Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2017-04-01T00:00:00+00:00__2017-07-01T00:00:00+00:00": {
+      "start": "2017-04-01T00:00:00+00:00",
+      "end": "2017-07-01T00:00:00+00:00",
+      "records": 653,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20170401_20170701_20260721T100128Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2017-07-01T00:00:00+00:00__2017-10-01T00:00:00+00:00": {
+      "start": "2017-07-01T00:00:00+00:00",
+      "end": "2017-10-01T00:00:00+00:00",
+      "records": 825,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20170701_20171001_20260721T100135Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2017-10-01T00:00:00+00:00__2018-01-01T00:00:00+00:00": {
+      "start": "2017-10-01T00:00:00+00:00",
+      "end": "2018-01-01T00:00:00+00:00",
+      "records": 659,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20171001_20180101_20260721T100142Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2018-01-01T00:00:00+00:00__2018-04-01T00:00:00+00:00": {
+      "start": "2018-01-01T00:00:00+00:00",
+      "end": "2018-04-01T00:00:00+00:00",
+      "records": 609,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20180101_20180401_20260721T100149Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2018-04-01T00:00:00+00:00__2018-07-01T00:00:00+00:00": {
+      "start": "2018-04-01T00:00:00+00:00",
+      "end": "2018-07-01T00:00:00+00:00",
+      "records": 779,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20180401_20180701_20260721T100156Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2018-07-01T00:00:00+00:00__2018-10-01T00:00:00+00:00": {
+      "start": "2018-07-01T00:00:00+00:00",
+      "end": "2018-10-01T00:00:00+00:00",
+      "records": 806,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20180701_20181001_20260721T100203Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2018-10-01T00:00:00+00:00__2019-01-01T00:00:00+00:00": {
+      "start": "2018-10-01T00:00:00+00:00",
+      "end": "2019-01-01T00:00:00+00:00",
+      "records": 596,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20181001_20190101_20260721T100209Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2019-01-01T00:00:00+00:00__2019-04-01T00:00:00+00:00": {
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2019-04-01T00:00:00+00:00",
+      "records": 734,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20190101_20190401_20260721T100216Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2019-04-01T00:00:00+00:00__2019-07-01T00:00:00+00:00": {
+      "start": "2019-04-01T00:00:00+00:00",
+      "end": "2019-07-01T00:00:00+00:00",
+      "records": 548,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20190401_20190701_20260721T100221Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2019-07-01T00:00:00+00:00__2019-10-01T00:00:00+00:00": {
+      "start": "2019-07-01T00:00:00+00:00",
+      "end": "2019-10-01T00:00:00+00:00",
+      "records": 1072,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20190701_20191001_20260721T100231Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2019-10-01T00:00:00+00:00__2020-01-01T00:00:00+00:00": {
+      "start": "2019-10-01T00:00:00+00:00",
+      "end": "2020-01-01T00:00:00+00:00",
+      "records": 1017,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20191001_20200101_20260721T100240Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2020-01-01T00:00:00+00:00__2020-04-01T00:00:00+00:00": {
+      "start": "2020-01-01T00:00:00+00:00",
+      "end": "2020-04-01T00:00:00+00:00",
+      "records": 777,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20200101_20200401_20260721T100247Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2020-04-01T00:00:00+00:00__2020-07-01T00:00:00+00:00": {
+      "start": "2020-04-01T00:00:00+00:00",
+      "end": "2020-07-01T00:00:00+00:00",
+      "records": 734,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20200401_20200701_20260721T100255Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2020-07-01T00:00:00+00:00__2020-10-01T00:00:00+00:00": {
+      "start": "2020-07-01T00:00:00+00:00",
+      "end": "2020-10-01T00:00:00+00:00",
+      "records": 867,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20200701_20201001_20260721T100303Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2020-10-01T00:00:00+00:00__2021-01-01T00:00:00+00:00": {
+      "start": "2020-10-01T00:00:00+00:00",
+      "end": "2021-01-01T00:00:00+00:00",
+      "records": 775,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20201001_20210101_20260721T100312Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2021-01-01T00:00:00+00:00__2021-04-01T00:00:00+00:00": {
+      "start": "2021-01-01T00:00:00+00:00",
+      "end": "2021-04-01T00:00:00+00:00",
+      "records": 722,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20210101_20210401_20260721T100319Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2021-04-01T00:00:00+00:00__2021-07-01T00:00:00+00:00": {
+      "start": "2021-04-01T00:00:00+00:00",
+      "end": "2021-07-01T00:00:00+00:00",
+      "records": 956,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20210401_20210701_20260721T100328Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2021-07-01T00:00:00+00:00__2021-10-01T00:00:00+00:00": {
+      "start": "2021-07-01T00:00:00+00:00",
+      "end": "2021-10-01T00:00:00+00:00",
+      "records": 824,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20210701_20211001_20260721T100336Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2021-10-01T00:00:00+00:00__2022-01-01T00:00:00+00:00": {
+      "start": "2021-10-01T00:00:00+00:00",
+      "end": "2022-01-01T00:00:00+00:00",
+      "records": 876,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20211001_20220101_20260721T100342Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2022-01-01T00:00:00+00:00__2022-04-01T00:00:00+00:00": {
+      "start": "2022-01-01T00:00:00+00:00",
+      "end": "2022-04-01T00:00:00+00:00",
+      "records": 1118,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20220101_20220401_20260721T100351Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2022-04-01T00:00:00+00:00__2022-07-01T00:00:00+00:00": {
+      "start": "2022-04-01T00:00:00+00:00",
+      "end": "2022-07-01T00:00:00+00:00",
+      "records": 1178,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20220401_20220701_20260721T100401Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2022-07-01T00:00:00+00:00__2022-10-01T00:00:00+00:00": {
+      "start": "2022-07-01T00:00:00+00:00",
+      "end": "2022-10-01T00:00:00+00:00",
+      "records": 1172,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20220701_20221001_20260721T100412Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2022-10-01T00:00:00+00:00__2023-01-01T00:00:00+00:00": {
+      "start": "2022-10-01T00:00:00+00:00",
+      "end": "2023-01-01T00:00:00+00:00",
+      "records": 1076,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20221001_20230101_20260721T100421Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2023-01-01T00:00:00+00:00__2023-04-01T00:00:00+00:00": {
+      "start": "2023-01-01T00:00:00+00:00",
+      "end": "2023-04-01T00:00:00+00:00",
+      "records": 1063,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20230101_20230401_20260721T100429Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2023-04-01T00:00:00+00:00__2023-07-01T00:00:00+00:00": {
+      "start": "2023-04-01T00:00:00+00:00",
+      "end": "2023-07-01T00:00:00+00:00",
+      "records": 1212,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20230401_20230701_20260721T100438Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2023-07-01T00:00:00+00:00__2023-10-01T00:00:00+00:00": {
+      "start": "2023-07-01T00:00:00+00:00",
+      "end": "2023-10-01T00:00:00+00:00",
+      "records": 1358,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20230701_20231001_20260721T100451Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2023-10-01T00:00:00+00:00__2024-01-01T00:00:00+00:00": {
+      "start": "2023-10-01T00:00:00+00:00",
+      "end": "2024-01-01T00:00:00+00:00",
+      "records": 1247,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20231001_20240101_20260721T100501Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2024-01-01T00:00:00+00:00__2024-04-01T00:00:00+00:00": {
+      "start": "2024-01-01T00:00:00+00:00",
+      "end": "2024-04-01T00:00:00+00:00",
+      "records": 1393,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20240101_20240401_20260721T100511Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2024-04-01T00:00:00+00:00__2024-07-01T00:00:00+00:00": {
+      "start": "2024-04-01T00:00:00+00:00",
+      "end": "2024-07-01T00:00:00+00:00",
+      "records": 1580,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20240401_20240701_20260721T100524Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2024-07-01T00:00:00+00:00__2024-10-01T00:00:00+00:00": {
+      "start": "2024-07-01T00:00:00+00:00",
+      "end": "2024-10-01T00:00:00+00:00",
+      "records": 1595,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20240701_20241001_20260721T100537Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2024-10-01T00:00:00+00:00__2025-01-01T00:00:00+00:00": {
+      "start": "2024-10-01T00:00:00+00:00",
+      "end": "2025-01-01T00:00:00+00:00",
+      "records": 1723,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20241001_20250101_20260721T100549Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2025-01-01T00:00:00+00:00__2025-04-01T00:00:00+00:00": {
+      "start": "2025-01-01T00:00:00+00:00",
+      "end": "2025-04-01T00:00:00+00:00",
+      "records": 1620,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20250101_20250401_20260721T100602Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2025-04-01T00:00:00+00:00__2025-07-01T00:00:00+00:00": {
+      "start": "2025-04-01T00:00:00+00:00",
+      "end": "2025-07-01T00:00:00+00:00",
+      "records": 1492,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20250401_20250701_20260721T100614Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2025-07-01T00:00:00+00:00__2025-10-01T00:00:00+00:00": {
+      "start": "2025-07-01T00:00:00+00:00",
+      "end": "2025-10-01T00:00:00+00:00",
+      "records": 1436,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20250701_20251001_20260721T100625Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2025-10-01T00:00:00+00:00__2026-01-01T00:00:00+00:00": {
+      "start": "2025-10-01T00:00:00+00:00",
+      "end": "2026-01-01T00:00:00+00:00",
+      "records": 960,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20251001_20260101_20260721T100633Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2026-01-01T00:00:00+00:00__2026-04-01T00:00:00+00:00": {
+      "start": "2026-01-01T00:00:00+00:00",
+      "end": "2026-04-01T00:00:00+00:00",
+      "records": 417,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20260101_20260401_20260721T100637Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2026-04-01T00:00:00+00:00__2026-07-01T00:00:00+00:00": {
+      "start": "2026-04-01T00:00:00+00:00",
+      "end": "2026-07-01T00:00:00+00:00",
+      "records": 426,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20260401_20260701_20260721T100641Z.json",
+      "status_code": 200,
+      "attempts": 1
+    },
+    "2026-07-01T00:00:00+00:00__2026-07-21T09:55:59.327078+00:00": {
+      "start": "2026-07-01T00:00:00+00:00",
+      "end": "2026-07-21T09:55:59.327078+00:00",
+      "records": 15,
+      "bronze_file": "C:\\memoria-seismic-observatory\\data\\bronze\\isc\\2026\\07\\21\\events_20260701_20260721_20260721T100641Z.json",
+      "status_code": 200,
+      "attempts": 1
+    }
+  },
+  "failed": {},
+  "query_id": "c84c043c77cd5b89",
+  "requested_start": "2008-01-01",
+  "requested_end": "2026-12-31",
+  "effective_end": "2026-07-21T09:55:59.326076+00:00",
+  "bounds": {
+    "min_latitude": 32.0,
+    "max_latitude": 44.0,
+    "min_longitude": -20.0,
+    "max_longitude": -5.0,
+    "min_magnitude": null
+  }
+}

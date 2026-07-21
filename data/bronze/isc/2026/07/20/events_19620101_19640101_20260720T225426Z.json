@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1962-01-01T00:00:00",
+    "endtime": "1964-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n874155|1962-01-28T03:24:25.000|36.1000|-7.3000|96.0|MDD|ISS|ISS|1898576||||Strait of Gibraltar|earthquake\n874393|1962-03-20T00:01:42.000|38.5000|-5.6000|33.0|MDD|ISS|ISS|1899011|M|4.60|MDD|Spain|earthquake\n874498|1962-04-09T08:52:47.000|35.2500|-9.7500||BCIS|ISS|ISS|1899178|M|5.10|MDD|West of Gibraltar|earthquake\n875854|1962-12-26T08:58:09.000|39.3200|-10.7400|10.0|ISS|ISS|ISS|1901466|M|5.73|WMO|North Atlantic Ocean|earthquake\n871919|1963-03-05T01:58:31.000|34.5000|-5.4000||BCIS|ISS|ISS|1895158|M|4.70|MDD|Morocco|earthquake\n872083|1963-03-31T14:57:58.000|35.0000|-10.0000||BCIS|ISS|ISS|1895443|M|5.20|MDD|Azores-Cape St. Vincent Ridge|earthquake\n872858|1963-08-01T01:49:24.000|37.2500|-7.5000||BCIS|ISS|ISS|1896736|M|4.20|MDD|Portugal|earthquake\n872867|1963-08-02T10:49:10.000|34.5000|-9.1000||BCIS|ISS|ISS|1896748|M|4.10|CGS|West of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n874155|1962-01-28T03:24:25.000|36.1000|-7.3000|96.0|MDD|ISS|ISS|1898576||||Strait of Gibraltar|earthquake\n874393|1962-03-20T00:01:42.000|38.5000|-5.6000|33.0|MDD|ISS|ISS|1899011|M|4.60|MDD|Spain|earthquake\n874498|1962-04-09T08:52:47.000|35.2500|-9.7500||BCIS|ISS|ISS|1899178|M|5.10|MDD|West of Gibraltar|earthquake\n875854|1962-12-26T08:58:09.000|39.3200|-10.7400|10.0|ISS|ISS|ISS|1901466|M|5.73|WMO|North Atlantic Ocean|earthquake\n871919|1963-03-05T01:58:31.000|34.5000|-5.4000||BCIS|ISS|ISS|1895158|M|4.70|MDD|Morocco|earthquake\n872083|1963-03-31T14:57:58.000|35.0000|-10.0000||BCIS|ISS|ISS|1895443|M|5.20|MDD|Azores-Cape St. Vincent Ridge|earthquake\n872858|1963-08-01T01:49:24.000|37.2500|-7.5000||BCIS|ISS|ISS|1896736|M|4.20|MDD|Portugal|earthquake\n872867|1963-08-02T10:49:10.000|34.5000|-9.1000||BCIS|ISS|ISS|1896748|M|4.10|CGS|West of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 10,
+  "record_count": 8,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1962-01-01T00%3A00%3A00&endtime=1964-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

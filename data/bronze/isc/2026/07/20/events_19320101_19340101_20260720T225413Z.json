@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1932-01-01T00:00:00",
+    "endtime": "1934-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n905515|1933-04-11T02:30:13.000|36.6000|-5.1000||CRT|ISS|ISS|1950613||||Strait of Gibraltar|earthquake\n905516|1933-04-11T03:07:32.000|36.6000|-5.1000||CRT|ISS|ISS|1950614||||Strait of Gibraltar|earthquake\n905715|1933-07-18T06:04:45.000|36.0000|-5.0000||ISS|ISS|ISS|1950956||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n905515|1933-04-11T02:30:13.000|36.6000|-5.1000||CRT|ISS|ISS|1950613||||Strait of Gibraltar|earthquake\n905516|1933-04-11T03:07:32.000|36.6000|-5.1000||CRT|ISS|ISS|1950614||||Strait of Gibraltar|earthquake\n905715|1933-07-18T06:04:45.000|36.0000|-5.0000||ISS|ISS|ISS|1950956||||Strait of Gibraltar|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 5,
+  "record_count": 3,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1932-01-01T00%3A00%3A00&endtime=1934-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

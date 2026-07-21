@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1920-01-01T00:00:00",
+    "endtime": "1922-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n912590|1920-09-01T10:33:00.000|35.5000|-6.4000||ISS|ISS|ISS|1959824||||Strait of Gibraltar|earthquake\n912669|1920-11-26T11:38:20.000|41.5000|-7.0000||ISS|ISS|ISS|1959911||||Portugal|earthquake\n912210|1921-04-22T16:04:02.000|44.0000|-17.0000|35.0|GUTE|ISS|ISS|1959397|MS|5.60|PAS|North Atlantic Ocean|earthquake\n912237|1921-05-21T11:10:20.000|35.0000|-16.0000||ISS|ISS|ISS|1959426||||Azores-Cape St. Vincent Ridge|earthquake\n912349|1921-10-23T12:33:36.000|37.5000|-9.0000||ISS|ISS|ISS|1959554||||Portugal|earthquake\n912357|1921-11-03T17:13:36.000|43.0000|-6.5000||ISS|ISS|ISS|1959562||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n912590|1920-09-01T10:33:00.000|35.5000|-6.4000||ISS|ISS|ISS|1959824||||Strait of Gibraltar|earthquake\n912669|1920-11-26T11:38:20.000|41.5000|-7.0000||ISS|ISS|ISS|1959911||||Portugal|earthquake\n912210|1921-04-22T16:04:02.000|44.0000|-17.0000|35.0|GUTE|ISS|ISS|1959397|MS|5.60|PAS|North Atlantic Ocean|earthquake\n912237|1921-05-21T11:10:20.000|35.0000|-16.0000||ISS|ISS|ISS|1959426||||Azores-Cape St. Vincent Ridge|earthquake\n912349|1921-10-23T12:33:36.000|37.5000|-9.0000||ISS|ISS|ISS|1959554||||Portugal|earthquake\n912357|1921-11-03T17:13:36.000|43.0000|-6.5000||ISS|ISS|ISS|1959562||||Spain|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 8,
+  "record_count": 6,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1920-01-01T00%3A00%3A00&endtime=1922-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}

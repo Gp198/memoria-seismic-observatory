@@ -1,0 +1,15 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1910-01-01T00:00:00",
+    "endtime": "1912-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 204,
+  "response_text": "",
+  "record_count": 0
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "format": "text",
+    "starttime": "1918-01-01T00:00:00",
+    "endtime": "1920-01-01T00:00:00",
+    "minlatitude": 32.0,
+    "maxlatitude": 44.0,
+    "minlongitude": -20.0,
+    "maxlongitude": -5.0,
+    "nodata": 204
+  },
+  "status_code": 200,
+  "content_type": "text/plain",
+  "response_text": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n913032|1918-01-14T20:02:36.000|44.0000|-20.0000||ISS|ISS|ISS|1960309||||Northern Mid-Atlantic Ridge|earthquake\n913109|1918-04-01T17:44:05.000|33.3000|-9.0000||ISS|ISS|ISS|1960394||||West of Gibraltar|earthquake\n913282|1918-09-15T16:41:06.000|34.5000|-10.0000||ISS|ISS|ISS|1960588||||Madeira Islands region|earthquake\n913386|1918-12-25T10:31:45.000|41.5000|-7.0000||ISS|ISS|ISS|1960705||||Portugal|earthquake\n912817|1919-06-26T18:58:00.000|34.5000|-10.0000||ISS|ISS|ISS|1960080||||Madeira Islands region|earthquake\n912871|1919-07-29T19:25:00.000|33.3000|-9.0000||ISS|ISS|ISS|1960138||||West of Gibraltar|earthquake\n912883|1919-08-09T22:41:30.000|33.3000|-9.0000||ISS|ISS|ISS|1960150||||West of Gibraltar|earthquake\n912925|1919-09-10T10:40:00.000|41.5000|-7.0000||ISS|ISS|ISS|1960196||||Portugal|earthquake\n912927|1919-09-10T10:56:05.000|41.5000|-7.0000||ISS|ISS|ISS|1960198||||Portugal|earthquake\n912929|1919-09-10T11:58:30.000|41.5000|-7.0000||ISS|ISS|ISS|1960200||||Portugal|earthquake\n912931|1919-09-10T14:21:50.000|41.5000|-7.0000||ISS|ISS|ISS|1960202||||Portugal|earthquake\n912934|1919-09-11T00:38:00.000|41.5000|-7.0000||ISS|ISS|ISS|1960205||||Portugal|earthquake\n912947|1919-09-13T18:11:30.000|44.0000|-20.0000||ISS|ISS|ISS|1960218||||Northern Mid-Atlantic Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "response_csv": "#EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType\n913032|1918-01-14T20:02:36.000|44.0000|-20.0000||ISS|ISS|ISS|1960309||||Northern Mid-Atlantic Ridge|earthquake\n913109|1918-04-01T17:44:05.000|33.3000|-9.0000||ISS|ISS|ISS|1960394||||West of Gibraltar|earthquake\n913282|1918-09-15T16:41:06.000|34.5000|-10.0000||ISS|ISS|ISS|1960588||||Madeira Islands region|earthquake\n913386|1918-12-25T10:31:45.000|41.5000|-7.0000||ISS|ISS|ISS|1960705||||Portugal|earthquake\n912817|1919-06-26T18:58:00.000|34.5000|-10.0000||ISS|ISS|ISS|1960080||||Madeira Islands region|earthquake\n912871|1919-07-29T19:25:00.000|33.3000|-9.0000||ISS|ISS|ISS|1960138||||West of Gibraltar|earthquake\n912883|1919-08-09T22:41:30.000|33.3000|-9.0000||ISS|ISS|ISS|1960150||||West of Gibraltar|earthquake\n912925|1919-09-10T10:40:00.000|41.5000|-7.0000||ISS|ISS|ISS|1960196||||Portugal|earthquake\n912927|1919-09-10T10:56:05.000|41.5000|-7.0000||ISS|ISS|ISS|1960198||||Portugal|earthquake\n912929|1919-09-10T11:58:30.000|41.5000|-7.0000||ISS|ISS|ISS|1960200||||Portugal|earthquake\n912931|1919-09-10T14:21:50.000|41.5000|-7.0000||ISS|ISS|ISS|1960202||||Portugal|earthquake\n912934|1919-09-11T00:38:00.000|41.5000|-7.0000||ISS|ISS|ISS|1960205||||Portugal|earthquake\n912947|1919-09-13T18:11:30.000|44.0000|-20.0000||ISS|ISS|ISS|1960218||||Northern Mid-Atlantic Ridge|earthquake\n# Agencies whose data contributed towards the results of this search:\n# ISS       International Seismological Summary                                              United Kingdom\n",
+  "parsed_row_count": 15,
+  "record_count": 13,
+  "response_url": "https://www.isc.ac.uk/fdsnws/event/1/query?format=text&starttime=1918-01-01T00%3A00%3A00&endtime=1920-01-01T00%3A00%3A00&minlatitude=32.0&maxlatitude=44.0&minlongitude=-20.0&maxlongitude=-5.0&nodata=204"
+}
