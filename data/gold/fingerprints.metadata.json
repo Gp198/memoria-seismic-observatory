@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
-  "generated_at_utc": "2026-08-07T05:14:06.185174+00:00",
-=======
-  "generated_at_utc": "2026-08-07T22:20:08.341222+00:00",
->>>>>>> Stashed changes
+  "generated_at_utc": "2026-08-08T04:40:01.887477+00:00",
   "row_count": 78685,
   "columns": [
     "window_start",

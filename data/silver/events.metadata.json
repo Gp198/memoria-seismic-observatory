@@ -1,10 +1,6 @@
 {
-<<<<<<< Updated upstream
-  "generated_at_utc": "2026-08-07T05:05:02.436480+00:00",
-=======
-  "generated_at_utc": "2026-08-07T22:11:31.775634+00:00",
->>>>>>> Stashed changes
-  "row_count": 95840,
+  "generated_at_utc": "2026-08-08T04:30:51.403468+00:00",
+  "row_count": 96233,
   "columns": [
     "event_id_memoria",
     "source_event_id",
@@ -47,7 +43,7 @@
   "parquet_written": true,
   "source_counts": {
     "ISC": 87864,
-    "IPMA": 7894,
+    "IPMA": 8287,
     "AHEAD": 82
   }
 }
