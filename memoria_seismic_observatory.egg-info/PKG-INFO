@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: memoria-seismic-observatory
-Version: 0.6.2
-Summary: Explainable seismic-state memory and replay platform for Portugal.
+Version: 2.0.4
+Summary: Explainable seismic and tectonic intelligence research platform for Portugal.
 Author: Gonçalo Pedro
 License: MIT
 Requires-Python: >=3.11
@@ -54,6 +54,8 @@ MEMÓRIA is **not** an earthquake prediction or public-alert system. It compares
 - Baseline probability comparison and Brier Score.
 - Professional Streamlit dashboard.
 - Context-aware Mistral explanatory assistant.
+- Scientific Council with grounded specialist reviewers, a Skeptic and Chair.
+- API-budget controls for the Council: role-specific token ceilings, compact evidence, usage accounting, cache and cooldown.
 - Automated Markdown report generation.
 - Unit tests and a scheduled GitHub Actions IPMA snapshot workflow.
 
@@ -328,3 +330,12 @@ magnitude and horizon. See `docs/scientific_integrity_v0.5.0.md`.
 ## Autoria e relação institucional
 
 O MEMÓRIA foi criado e é desenvolvido por **Gonçalo Pedro**. É um projeto experimental independente. Não é um projeto, produto, iniciativa ou serviço oficial do IPMA. O IPMA é uma fonte pública de dados integrada e a referência oficial para informação sísmica e segurança pública em Portugal.
+
+
+## MEMÓRIA v2.0 — Tectonic Intelligence
+
+v2.0 adds an experimental tectonic-intelligence layer without changing the scientific boundary of the project. It includes multi-method anomaly detection, Gutenberg–Richter b-value monitoring, migration analysis, recurrent seismic regimes, an ETAS-lite benchmark, optional GNSS/InSAR/fault context, evidence graphs and a Mistral-powered Scientific Council.
+
+**Important:** MEMÓRIA detects statistical changes in observed seismic behaviour. It does not predict the date, location or magnitude of future earthquakes and is not an official IPMA product or alerting service.
+
+See `docs/v2_tectonic_intelligence.md` and `docs/v2_test_guide.md`.

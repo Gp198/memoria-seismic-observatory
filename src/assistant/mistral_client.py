@@ -50,6 +50,7 @@ class MistralAssistantResponse:
     prompt_tokens: int | None = None
     completion_tokens: int | None = None
     total_tokens: int | None = None
+    finish_reason: str | None = None
 
 
 def _extract_text(payload: dict[str, Any]) -> str:
@@ -104,6 +105,81 @@ class MistralAssistantClient:
     def endpoint(self) -> str:
         return self.config.base_url.rstrip("/") + "/chat/completions"
 
+
+    def complete_with_system(
+        self,
+        *,
+        system_prompt: str,
+        question: str,
+        context_text: str,
+        max_tokens: int | None = None,
+    ) -> MistralAssistantResponse:
+        cleaned_question = question.strip()
+        if not cleaned_question:
+            raise ValueError("A pergunta não pode estar vazia.")
+        effective_max_tokens = self.config.max_tokens if max_tokens is None else int(max_tokens)
+        if effective_max_tokens < 64:
+            raise ValueError("max_tokens deve ser pelo menos 64.")
+        payload = {
+            "model": self.config.model,
+            "messages": [
+                {"role": "system", "content": system_prompt.strip()},
+                {"role": "user", "content": f"EVIDÊNCIA MEMÓRIA:\\n{context_text}\\n\\nTAREFA:\\n{cleaned_question}"},
+            ],
+            "temperature": self.config.temperature,
+            "max_tokens": effective_max_tokens,
+            "safe_prompt": True,
+        }
+        headers = {
+            "Authorization": f"Bearer {self.config.api_key}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "MEMORIA-Seismic-Observatory/2.0.4",
+        }
+        last_error: Exception | None = None
+        for attempt in range(self.config.max_retries + 1):
+            try:
+                response = self.session.post(
+                    self.endpoint,
+                    headers=headers,
+                    json=payload,
+                    timeout=self.config.timeout_seconds,
+                )
+            except requests.Timeout as error:
+                last_error = error
+                if attempt < self.config.max_retries:
+                    self._sleep(min(2**attempt, 4)); continue
+                raise MistralAssistantError("A API Mistral não respondeu dentro do tempo limite.") from error
+            except requests.RequestException as error:
+                raise MistralAssistantError("Não foi possível contactar a API Mistral.") from error
+            if response.status_code == 401:
+                raise MistralAuthenticationError("A chave Mistral foi recusada.")
+            if response.status_code == 429:
+                if attempt < self.config.max_retries:
+                    self._sleep(min(2**attempt, 6)); continue
+                raise MistralRateLimitError("O limite da API Mistral foi atingido.")
+            if response.status_code >= 500:
+                last_error = RuntimeError(f"Mistral HTTP {response.status_code}")
+                if attempt < self.config.max_retries:
+                    self._sleep(min(2**attempt, 4)); continue
+                raise MistralAssistantError("A API Mistral está temporariamente indisponível.") from last_error
+            if response.status_code >= 400:
+                raise MistralAssistantError(f"O pedido ao agente foi rejeitado (HTTP {response.status_code}).")
+            try:
+                data = response.json()
+            except ValueError as error:
+                raise MistralAssistantError("A API Mistral devolveu JSON inválido.") from error
+            usage = data.get("usage") or {}
+            return MistralAssistantResponse(
+                text=enforce_identity_guard(_extract_text(data)),
+                model=str(data.get("model") or self.config.model),
+                prompt_tokens=_optional_int(usage.get("prompt_tokens")),
+                completion_tokens=_optional_int(usage.get("completion_tokens")),
+                total_tokens=_optional_int(usage.get("total_tokens")),
+                finish_reason=str((data.get("choices") or [{}])[0].get("finish_reason") or "") or None,
+            )
+        raise MistralAssistantError("Não foi possível concluir o pedido ao agente.") from last_error
+
     def complete(
         self,
         *,
@@ -143,7 +219,7 @@ class MistralAssistantClient:
             "Authorization": f"Bearer {self.config.api_key}",
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "User-Agent": "MEMORIA-Seismic-Observatory/0.6.1",
+            "User-Agent": "MEMORIA-Seismic-Observatory/2.0.4",
         }
 
         last_error: Exception | None = None
@@ -220,6 +296,7 @@ class MistralAssistantClient:
                 prompt_tokens=_optional_int(usage.get("prompt_tokens")),
                 completion_tokens=_optional_int(usage.get("completion_tokens")),
                 total_tokens=_optional_int(usage.get("total_tokens")),
+                finish_reason=str((data.get("choices") or [{}])[0].get("finish_reason") or "") or None,
             )
 
         raise MistralAssistantError(

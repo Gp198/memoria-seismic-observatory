@@ -106,7 +106,7 @@ def test_mistral_client_success():
                 {
                     "model": "mistral-small-latest",
                     "choices": [
-                        {"message": {"content": "O percentil é relativo."}}
+                        {"message": {"content": "O percentil é relativo."}, "finish_reason": "stop"}
                     ],
                     "usage": {
                         "prompt_tokens": 100,
@@ -128,10 +128,39 @@ def test_mistral_client_success():
     )
     assert response.text == "O percentil é relativo."
     assert response.total_tokens == 110
+    assert response.finish_reason == "stop"
     assert session.calls[0][0].endswith("/chat/completions")
     sent = session.calls[0][1]["json"]
     assert sent["model"] == "mistral-small-latest"
     assert sent["safe_prompt"] is True
+
+
+def test_complete_with_system_can_override_max_tokens_per_agent():
+    session = FakeSession(
+        [
+            FakeResponse(
+                200,
+                {
+                    "model": "mistral-small-latest",
+                    "choices": [{"message": {"content": "VEREDITO\nOK"}, "finish_reason": "stop"}],
+                    "usage": {"prompt_tokens": 20, "completion_tokens": 5, "total_tokens": 25},
+                },
+            )
+        ]
+    )
+    client = MistralAssistantClient(
+        MistralAssistantConfig(api_key="test", max_tokens=900),
+        session=session,
+        sleep_function=lambda _: None,
+    )
+    client.complete_with_system(
+        system_prompt="Teste",
+        question="Avalia.",
+        context_text="{}",
+        max_tokens=650,
+    )
+    sent = session.calls[0][1]["json"]
+    assert sent["max_tokens"] == 650
 
 
 def test_mistral_client_authentication_error():

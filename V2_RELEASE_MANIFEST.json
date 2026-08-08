@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "release_name": "Explainable Seismic & Tectonic Intelligence Platform",
+  "creator": "Gonçalo Pedro",
+  "scientific_boundary": "Statistical seismic anomaly detection is not earthquake prediction or confirmed tectonic interpretation.",
+  "new_pages": [
+    "Inteligência tectónica",
+    "Model Arena",
+    "Scientific Council"
+  ],
+  "new_capabilities": [
+    "Robust univariate anomaly detection",
+    "Robust Mahalanobis",
+    "Isolation Forest",
+    "CUSUM/EWMA",
+    "Persistence consensus",
+    "Gutenberg-Richter b-value",
+    "Epicentral/depth migration",
+    "Recurring seismic regimes and transitions",
+    "ETAS-lite experimental baseline",
+    "Model Arena",
+    "Optional GNSS",
+    "Optional InSAR",
+    "Optional reviewed fault GeoJSON",
+    "Scientific Evidence Graph",
+    "Mistral Scientific Council",
+    "Skeptic Agent"
+  ],
+  "validation": {
+    "compileall": "passed",
+    "targeted_and_core_tests": "46 passed",
+    "pipeline_tectonic_status": "passed on demo catalogue",
+    "streamlit_visual_runtime": "not executed in build environment because Streamlit package is not installed there"
+  },
+  "optional_files": {
+    "gnss": "data/external/gnss.csv",
+    "insar": "data/external/insar.csv",
+    "faults": "config/faults.geojson"
+  }
+}

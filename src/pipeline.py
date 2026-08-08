@@ -6,6 +6,10 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.anomalies.engine import assess_anomaly
+from src.seismology.gutenberg_richter import estimate_b_value
+from src.seismology.migration import estimate_migration
+
 from src.config import PATHS, load_settings
 from src.demo import generate_demo_events
 from src.features.fingerprints import (
@@ -21,7 +25,8 @@ from src.ingestion.isc import (
     fetch_isc_events,
     normalise_isc_response,
 )
-from src.quality.deduplication import deduplicate_events
+from src.quality.completeness import estimate_magnitude_completeness
+from src.quality.deduplication import deduplicate_events, preferred_events
 from src.quality.declustering import annotate_declustering
 from src.quality.magnitude import homogenize_magnitudes
 from src.reporting.explanations import generate_markdown_report
@@ -311,6 +316,9 @@ def main() -> None:
     sub.add_parser("tls-diagnostics")
     sub.add_parser("clean-derived")
     sub.add_parser("data-status")
+    tectonic_status = sub.add_parser("tectonic-status")
+    tectonic_status.add_argument("--domain", default=None)
+    tectonic_status.add_argument("--window", type=int, default=90)
     validate_grid = sub.add_parser("validate-grid")
     validate_grid.add_argument("--domain", default="Margem Sudoeste Ibérica")
     validate_grid.add_argument("--window-days", type=int, default=90)
@@ -536,6 +544,27 @@ def main() -> None:
                 f"Validation complete: {len(scores)} cuts, "
                 f"{len(summary)} model/threshold/horizon summaries."
             )
+
+
+    elif args.command == "tectonic-status":
+        from src.storage import load_gold_fingerprints
+        events = preferred_events(load_silver_events())
+        gold = load_gold_fingerprints()
+        domains = sorted(events["tectonic_domain"].dropna().astype(str).unique())
+        domain = args.domain or next((d for d in domains if d != "Fora dos domínios piloto"), domains[0])
+        fp = gold[(gold["tectonic_domain"] == domain) & (gold["window_days"] == args.window)].sort_values("window_end")
+        anomaly = assess_anomaly(fp)
+        domain_events = events[events["tectonic_domain"] == domain]
+        mc_est = estimate_magnitude_completeness(domain_events["magnitude_comparable"])
+        b = estimate_b_value(domain_events["magnitude_comparable"], mc_est.mc)
+        migration = estimate_migration(domain_events.tail(500))
+        print(json.dumps({
+            "domain": domain,
+            "window_days": args.window,
+            "anomaly": anomaly.to_dict(),
+            "b_value": b.__dict__,
+            "migration": migration.__dict__,
+        }, ensure_ascii=False, indent=2, default=str))
 
     elif args.command == "data-status":
         try:

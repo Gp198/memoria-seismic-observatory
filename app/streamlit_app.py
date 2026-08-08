@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import sys
+import json
+import hashlib
+import os
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +17,23 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from src.anomalies.engine import assess_anomaly
+from src.seismology.gutenberg_richter import (
+    estimate_b_value,
+    estimate_scientific_b_value,
+    format_b_sigma,
+    rolling_b_value,
+)
+from src.seismology.migration import estimate_migration
+from src.regimes.states import infer_regimes
+from src.models.etas import forecast_etas_lite
+from src.models.arena import add_etas_lite_scores, summarise_arena, summarise_global_leaderboard
+from src.multimodal.gnss import load_gnss_csv, gnss_anomaly_summary
+from src.multimodal.insar import load_insar_csv, insar_anomaly_summary
+from src.geophysics.faults import load_faults_geojson, nearest_fault_summary
+from src.evidence.graph import build_evidence_graph
+from src.agents.scientific_council import AGENT_ROLES, estimate_council_budget, run_scientific_council
+from src.assistant.mistral_client import MistralAssistantClient, MistralAssistantConfig, MistralAssistantError
 from src.assistant.context import build_assistant_context
 from src.assistant.ui import render_assistant_panel
 from src.backtesting.replay import (
@@ -64,7 +85,7 @@ from src.similarity.nearest_states import (
 )
 from src.storage import load_gold_fingerprints, load_silver_events
 
-APP_VERSION = "0.6.2"
+APP_VERSION = "2.0.4"
 CREATOR = "Gonçalo Pedro"
 
 st.set_page_config(
@@ -316,6 +337,98 @@ def professional_layout(figure: go.Figure, height: int | None = None) -> go.Figu
     return figure
 
 
+
+@st.cache_data(show_spinner=False, ttl=900)
+def run_arena_cached(
+    events: pd.DataFrame,
+    fingerprints: pd.DataFrame,
+    domain: str,
+    window_days: int,
+    threshold: float,
+    horizon: int,
+    catalogue_mode: str,
+    magnitude_policy: str,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    scores = walk_forward_backtest(
+        events,
+        fingerprints,
+        domain=domain,
+        window_days=window_days,
+        threshold_magnitude=threshold,
+        horizon_days=horizon,
+        frequency="90D",
+        catalogue_mode=catalogue_mode,
+        magnitude_policy=magnitude_policy,
+    )
+    scores = add_etas_lite_scores(events, scores, domain, threshold, horizon)
+    arena = summarise_arena(scores)
+    return arena.scores, arena.metrics
+
+
+@st.cache_data(show_spinner=False, ttl=1800)
+def run_arena_grid_cached(
+    events: pd.DataFrame,
+    fingerprints: pd.DataFrame,
+    domain: str,
+    window_days: int,
+    thresholds: tuple[float, ...],
+    horizons: tuple[int, ...],
+    catalogue_mode: str,
+    magnitude_policy: str,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    metric_frames: list[pd.DataFrame] = []
+    for threshold in thresholds:
+        for horizon in horizons:
+            _, metrics = run_arena_cached(
+                events,
+                fingerprints,
+                domain,
+                window_days,
+                float(threshold),
+                int(horizon),
+                catalogue_mode,
+                magnitude_policy,
+            )
+            if metrics.empty:
+                continue
+            annotated = metrics.copy()
+            annotated.insert(0, "Magnitude-alvo", float(threshold))
+            annotated.insert(1, "Horizonte", int(horizon))
+            annotated.insert(2, "Fingerprint", int(window_days))
+            metric_frames.append(annotated)
+    if not metric_frames:
+        return pd.DataFrame(), pd.DataFrame()
+    grid = pd.concat(metric_frames, ignore_index=True)
+    return grid, summarise_global_leaderboard(grid)
+
+
+def _mistral_key_from_runtime() -> str | None:
+    try:
+        value = st.secrets.get("MISTRAL_API_KEY")
+    except Exception:
+        value = None
+    if value:
+        return str(value).strip()
+    value = os.getenv("MISTRAL_API_KEY")
+    if value:
+        return str(value).strip()
+    value = st.session_state.get("memoria_mistral_api_key_session")
+    return str(value).strip() if value else None
+
+
+def _runtime_int(name: str, default: int, minimum: int = 0, maximum: int = 100000) -> int:
+    try:
+        value = int(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        value = default
+    return max(minimum, min(value, maximum))
+
+
+@st.cache_resource(show_spinner=False)
+def _scientific_council_shared_cache() -> dict[str, object]:
+    """Process-local cache shared by Streamlit sessions; no API key is stored."""
+    return {}
+
 def render_header(is_demo: bool, source_count: int, last_year: int | None) -> None:
     catalogue = "DEMONSTRAÇÃO SINTÉTICA" if is_demo else "CATÁLOGO CONSOLIDADO"
     last_year_text = str(last_year) if last_year else "—"
@@ -324,9 +437,7 @@ def render_header(is_demo: bool, source_count: int, last_year: int | None) -> No
         <section class="mem-hero">
           <div class="mem-eyebrow">Seismic intelligence · Portugal</div>
           <h1>MEMÓRIA</h1>
-          <p>Portuguese Seismic Memory Observatory — uma plataforma de inteligência
-          sísmica explicável que compara o estado atual com a memória histórica,
-          mede incerteza e valida hipóteses através de replay temporal.</p>
+          <p>Portuguese Seismic & Tectonic Intelligence Platform — memória histórica, deteção multivariada de anomalias, regimes sísmicos, benchmarking de modelos e revisão científica assistida por agentes.</p>
           <div class="mem-hero-meta">
             <span class="mem-chip">◉ {catalogue}</span>
             <span class="mem-chip">◫ {source_count} fontes integradas</span>
@@ -480,7 +591,7 @@ if magnitude_policy == "validated" and preferred.empty:
 
 page = st.radio(
     "Navegação",
-    ["Visão geral", "Memória semelhante", "Replay Portugal", "Qualidade e metodologia"],
+    ["Visão geral", "Memória semelhante", "Replay Portugal", "Inteligência tectónica", "Model Arena", "Scientific Council", "Qualidade e metodologia"],
     horizontal=True,
     label_visibility="collapsed",
 )
@@ -1732,6 +1843,593 @@ elif page == "Replay Portugal":
         except (ValueError, OverflowError, pd.errors.OutOfBoundsDatetime) as error:
             st.warning(f"Replay indisponível: {error}")
 
+
+
+elif page == "Inteligência tectónica":
+    render_section(
+        "Tectonic Intelligence",
+        "Deteção experimental de anomalias sísmicas, regimes, b-value e migração — sem inferir previsão.",
+    )
+    if domain_fp.empty or domain_events.empty:
+        st.warning("Sem dados suficientes para a análise tectónica.")
+    else:
+        anomaly = assess_anomaly(domain_fp)
+        latest_fp = domain_fp.iloc[-1]
+        b_assessment, b_population = estimate_scientific_b_value(
+            domain_events, magnitude_policy, minimum_events=50
+        )
+        b_est = b_assessment.estimate
+        recent_events = domain_events.tail(min(600, len(domain_events)))
+        migration = estimate_migration(recent_events)
+        regimes = infer_regimes(domain_fp)
+
+        a1, a2, a3, a4, a5 = st.columns(5)
+        a1.metric("Anomaly score", f"{anomaly.score:.0f}/100")
+        a2.metric("Estado", anomaly.level)
+        a3.metric("Consenso", f"{anomaly.method_agreement}/{anomaly.method_total}")
+        a4.metric("Persistência", f"{anomaly.persistence_windows} janelas")
+        a5.metric("Referência", f"{anomaly.reference_windows} janelas")
+
+        if anomaly.statistical_anomaly:
+            st.warning(anomaly.tectonic_interpretation)
+        else:
+            st.info(anomaly.tectonic_interpretation)
+
+        components = pd.DataFrame([
+            {"Detetor": component.name, "Score": component.score, "Ativado": component.triggered, "Detalhe": component.detail}
+            for component in anomaly.components
+        ])
+        left, right = st.columns([1.2, 1])
+        with left:
+            fig = px.bar(
+                components.sort_values("Score"),
+                x="Score", y="Detetor", orientation="h", text="Score",
+                title="Consenso entre detetores independentes",
+            )
+            fig.update_traces(texttemplate="%{text:.0f}", textposition="outside")
+            fig.update_xaxes(range=[0, 100])
+            professional_layout(fig, 430)
+            st.plotly_chart(fig, width="stretch")
+        with right:
+            st.markdown("#### Evidência sismológica")
+            if b_est.sufficient_data:
+                b_label = "b-value validado" if b_assessment.validated_population else "b-value exploratório"
+                st.metric(b_label, f"{b_est.b_value:.2f}")
+                st.caption(
+                    f"{format_b_sigma(b_est.sigma)} · Mc={b_est.mc:.1f} · {b_est.event_count} eventos acima de Mc · Aki MLE"
+                )
+                st.caption(f"População: {b_assessment.population_label}")
+                if b_assessment.systematic_uncertainty_dominant:
+                    st.warning(b_assessment.warning)
+                else:
+                    st.info(b_assessment.warning)
+            else:
+                st.metric("b-value", "—")
+                st.caption(b_assessment.warning)
+            if migration.sufficient_data:
+                st.metric("Migração epicentral", f"{migration.distance_km:.1f} km")
+                st.caption(
+                    f"Azimute {migration.bearing_degrees:.0f}° · "
+                    f"{migration.speed_km_per_month:.1f} km/mês · "
+                    f"tendência de profundidade {migration.depth_trend_km_per_month or 0:.2f} km/mês"
+                )
+            else:
+                st.metric("Migração epicentral", "—")
+
+        if b_est.sufficient_data:
+            b_series = rolling_b_value(
+                b_population.frame,
+                float(b_est.mc),
+                window_events=80,
+                step_events=20,
+                magnitude_column=b_population.magnitude_column,
+            )
+            if not b_series.empty:
+                fig_b = px.line(
+                    b_series, x="window_end", y="b_value",
+                    title="Evolução do b-value na mesma população de magnitude"
+                )
+                professional_layout(fig_b, 360)
+                st.plotly_chart(fig_b, width="stretch")
+                st.caption(
+                    "A série usa a mesma coorte fonte/escala (ou população validada) do valor atual; não mistura escalas operacionais entre janelas."
+                )
+
+        st.markdown("### Seismic Regime Engine")
+        st.info(
+            "**Regime ≠ anomalia ≠ interpretação tectónica.** Regime é uma classe geométrica recorrente dos fingerprints; "
+            "anomalia mede desvio face à referência; interpretação tectónica exige evidência física independente e revisão especializada."
+        )
+        if regimes.assignments.empty:
+            st.warning("Amostra insuficiente para inferir regimes recorrentes.")
+        else:
+            r1, r2, r3 = st.columns(3)
+            r1.metric("Regime estatístico atual", regimes.current_label)
+            r2.metric("Confiança geométrica", format_percentage(regimes.confidence))
+            r3.metric("Regimes aprendidos", regimes.cluster_count)
+            st.caption(
+                "A confiança é proximidade geométrica ao cluster aprendido. Não representa probabilidade de anomalia, hazard ou evento futuro."
+            )
+            regime_counts = regimes.assignments["regime_label"].value_counts().rename_axis("Regime").reset_index(name="Janelas")
+            st.dataframe(regime_counts, width="stretch", hide_index=True)
+            with st.expander("Matriz de transição entre regimes"):
+                st.dataframe(regimes.transition_matrix, width="stretch")
+
+        st.markdown("### Multimodal Tectonic Intelligence")
+        gnss = gnss_anomaly_summary(load_gnss_csv(ROOT / "data" / "external" / "gnss.csv"))
+        insar = insar_anomaly_summary(load_insar_csv(ROOT / "data" / "external" / "insar.csv"))
+        faults = load_faults_geojson(ROOT / "config" / "faults.geojson")
+        fault_summary = nearest_fault_summary(recent_events.tail(300), faults) if faults else pd.DataFrame()
+        m1, m2, m3 = st.columns(3)
+        m1.metric("GNSS", str(gnss.get("status")))
+        m2.metric("InSAR", str(insar.get("status")))
+        m3.metric("Falhas geológicas", "Disponível" if faults else "Não configurado")
+        if not faults:
+            st.caption("Adiciona `config/faults.geojson` com uma fonte científica revista para ativar distância a falhas. O MEMÓRIA não inclui geometrias inventadas.")
+        if not gnss.get("available") or not insar.get("available"):
+            st.caption("GNSS/InSAR são opcionais. Coloca dados revistos em `data/external/gnss.csv` e `data/external/insar.csv` para ativar consenso multimodal.")
+        if not fault_summary.empty:
+            st.dataframe(fault_summary.head(20), width="stretch", hide_index=True)
+
+        nodes, edges = build_evidence_graph(anomaly, b_est, migration, gnss, insar)
+        with st.expander("Scientific Evidence Graph"):
+            st.markdown("**Nós de evidência**")
+            st.dataframe(nodes, width="stretch", hide_index=True)
+            st.markdown("**Relações**")
+            st.dataframe(edges, width="stretch", hide_index=True)
+
+        assistant_page_details = {
+            "tectonic_intelligence": anomaly.to_dict(),
+            "b_value": {
+                **b_est.__dict__,
+                "scientific_status": b_assessment.status,
+                "population_label": b_assessment.population_label,
+                "systematic_uncertainty_dominant": b_assessment.systematic_uncertainty_dominant,
+                "warning": b_assessment.warning,
+            },
+            "migration": migration.__dict__,
+            "current_regime": regimes.current_label,
+            "gnss": gnss,
+            "insar": insar,
+        }
+        st.markdown(
+            """<div class="mem-note"><b>Limite de interpretação:</b> este módulo deteta alterações estatísticas no comportamento sísmico. O termo «tectónico» só deve ser usado como interpretação física quando existir evidência geofísica independente e revisão especializada.</div>""",
+            unsafe_allow_html=True,
+        )
+
+elif page == "Model Arena":
+    render_section(
+        "Seismic Model Arena",
+        "Benchmark reproduzível por cenário e leaderboard multiescenário: MEMÓRIA vs Empírico vs Poisson vs ETAS-lite experimental.",
+    )
+    st.caption(
+        "ETAS-lite é uma baseline auto-excitante transparente para experimentação; não substitui uma implementação ETAS calibrada por sismólogos. "
+        "O leaderboard global agrega desempenho por cenário e não deve ser interpretado como uma probabilidade sísmica única."
+    )
+
+    single_tab, grid_tab = st.tabs(["Cenário único", "Leaderboard global M × horizonte"])
+
+    with single_tab:
+        c1, c2, c3 = st.columns(3)
+        arena_threshold = c1.selectbox("Magnitude-alvo", [3.5, 4.0, 4.5, 5.0], index=1, key="arena_single_threshold")
+        arena_horizon = c2.selectbox("Horizonte", [7, 30, 90, 365], index=1, key="arena_single_horizon")
+        arena_window = c3.selectbox("Fingerprint", [30, 90, 365], index=1, key="arena_single_window")
+        single_signature = hashlib.sha256(
+            json.dumps(
+                [selected_domain, catalogue_mode, magnitude_policy, arena_window, arena_threshold, arena_horizon],
+                ensure_ascii=False,
+            ).encode("utf-8")
+        ).hexdigest()[:16]
+
+        if st.button("Executar cenário", type="primary", key="arena_single_run"):
+            try:
+                with st.spinner("A executar walk-forward e ETAS-lite..."):
+                    arena_scores, arena_metrics = run_arena_cached(
+                        preferred,
+                        fingerprint_source,
+                        selected_domain,
+                        int(arena_window),
+                        float(arena_threshold),
+                        int(arena_horizon),
+                        catalogue_mode,
+                        magnitude_policy,
+                    )
+                st.session_state["memoria_v2_arena_scores"] = arena_scores
+                st.session_state["memoria_v2_arena_metrics"] = arena_metrics
+                st.session_state["memoria_v2_arena_signature"] = single_signature
+            except Exception as error:
+                st.error(f"Model Arena indisponível: {error}")
+
+        arena_metrics = st.session_state.get("memoria_v2_arena_metrics")
+        arena_scores = st.session_state.get("memoria_v2_arena_scores")
+        if st.session_state.get("memoria_v2_arena_signature") != single_signature:
+            arena_metrics = None
+            arena_scores = None
+            st.info("A configuração do cenário mudou. Executa novamente para evitar mostrar métricas desatualizadas.")
+
+        if isinstance(arena_metrics, pd.DataFrame) and not arena_metrics.empty:
+            st.dataframe(arena_metrics, width="stretch", hide_index=True)
+            metric_plot = arena_metrics.dropna(subset=["Brier"]).copy()
+            fig = px.bar(metric_plot, x="Modelo", y="Brier", title="Brier Score — menor é melhor", text="Brier")
+            fig.update_traces(texttemplate="%{text:.4f}")
+            professional_layout(fig, 380)
+            st.plotly_chart(fig, width="stretch")
+            if "BSS vs Poisson" in arena_metrics:
+                fig_skill = px.bar(
+                    arena_metrics,
+                    x="Modelo",
+                    y="BSS vs Poisson",
+                    title="Brier Skill Score vs Poisson",
+                    text="BSS vs Poisson",
+                )
+                fig_skill.update_traces(texttemplate="%{text:.1%}")
+                professional_layout(fig_skill, 360)
+                st.plotly_chart(fig_skill, width="stretch")
+        else:
+            st.info("Executa o cenário para comparar os modelos sob os mesmos cutoffs, domínio, magnitude e horizonte.")
+
+    with grid_tab:
+        g1, g2, g3 = st.columns([1.4, 1.4, 1])
+        grid_thresholds = g1.multiselect(
+            "Magnitudes-alvo",
+            [3.0, 3.5, 4.0, 4.5, 5.0],
+            default=[3.5, 4.0, 4.5, 5.0],
+            key="arena_grid_thresholds",
+        )
+        grid_horizons = g2.multiselect(
+            "Horizontes (dias)",
+            [7, 30, 90, 365],
+            default=[7, 30, 90],
+            key="arena_grid_horizons",
+        )
+        grid_window = g3.selectbox("Fingerprint", [30, 90, 365], index=1, key="arena_grid_window")
+        scenario_count = len(grid_thresholds) * len(grid_horizons)
+        st.caption(
+            f"Grelha selecionada: **{scenario_count} cenários**. Cada combinação magnitude × horizonte é avaliada com os mesmos cutoffs e modelos. "
+            "O ranking global usa média de ranks e métricas por cenário para não esconder diferenças de prevalência entre alvos."
+        )
+        grid_signature = hashlib.sha256(
+            json.dumps(
+                [
+                    selected_domain,
+                    catalogue_mode,
+                    magnitude_policy,
+                    int(grid_window),
+                    sorted(float(v) for v in grid_thresholds),
+                    sorted(int(v) for v in grid_horizons),
+                ],
+                ensure_ascii=False,
+            ).encode("utf-8")
+        ).hexdigest()[:16]
+        if st.button(
+            "Executar leaderboard global",
+            type="primary",
+            key="arena_grid_run",
+            disabled=scenario_count == 0 or scenario_count > 20,
+        ):
+            try:
+                with st.spinner(f"A executar {scenario_count} cenários walk-forward; resultados individuais são reutilizados por cache..."):
+                    arena_grid_metrics, global_leaderboard = run_arena_grid_cached(
+                        preferred,
+                        fingerprint_source,
+                        selected_domain,
+                        int(grid_window),
+                        tuple(sorted(float(v) for v in grid_thresholds)),
+                        tuple(sorted(int(v) for v in grid_horizons)),
+                        catalogue_mode,
+                        magnitude_policy,
+                    )
+                st.session_state["memoria_v2_arena_grid_metrics"] = arena_grid_metrics
+                st.session_state["memoria_v2_arena_global_leaderboard"] = global_leaderboard
+                st.session_state["memoria_v2_arena_grid_signature"] = grid_signature
+            except Exception as error:
+                st.error(f"Leaderboard global indisponível: {error}")
+
+        grid_metrics = st.session_state.get("memoria_v2_arena_grid_metrics")
+        global_leaderboard = st.session_state.get("memoria_v2_arena_global_leaderboard")
+        if st.session_state.get("memoria_v2_arena_grid_signature") != grid_signature:
+            grid_metrics = None
+            global_leaderboard = None
+            st.info("A grelha mudou. Executa novamente para recalcular o leaderboard desta configuração.")
+
+        if isinstance(global_leaderboard, pd.DataFrame) and not global_leaderboard.empty:
+            st.markdown("### Leaderboard global")
+            st.dataframe(global_leaderboard, width="stretch", hide_index=True)
+            winner = global_leaderboard.iloc[0]
+            l1, l2, l3, l4 = st.columns(4)
+            l1.metric("Melhor rank médio", str(winner["Modelo"]))
+            l2.metric("Rank Brier médio", f"{float(winner['Rank Brier médio']):.2f}")
+            l3.metric("Vitórias", f"{int(winner['Vitórias Brier'])}/{int(winner['Cenários'])}")
+            l4.metric("Skill > Poisson", format_percentage(float(winner["Taxa de skill > Poisson"])))
+            st.warning(
+                "O primeiro lugar é um resumo experimental da grelha, não prova superioridade universal. Verifica sempre BSS, AP, número de positivos e estabilidade por cenário."
+            )
+
+            rank_plot = px.bar(
+                global_leaderboard.sort_values("Rank Brier médio", ascending=True),
+                x="Modelo",
+                y="Rank Brier médio",
+                text="Rank Brier médio",
+                title="Rank Brier médio entre cenários — menor é melhor",
+            )
+            rank_plot.update_traces(texttemplate="%{text:.2f}")
+            professional_layout(rank_plot, 360)
+            st.plotly_chart(rank_plot, width="stretch")
+
+            if isinstance(grid_metrics, pd.DataFrame) and not grid_metrics.empty:
+                model_for_heatmap = st.selectbox(
+                    "Modelo para mapa de skill",
+                    grid_metrics["Modelo"].dropna().astype(str).unique().tolist(),
+                    key="arena_grid_heatmap_model",
+                )
+                heat = grid_metrics.loc[grid_metrics["Modelo"].eq(model_for_heatmap)].pivot_table(
+                    index="Magnitude-alvo",
+                    columns="Horizonte",
+                    values="BSS vs Poisson",
+                    aggfunc="mean",
+                )
+                if not heat.empty:
+                    fig_heat = px.imshow(
+                        heat,
+                        text_auto=".2f",
+                        aspect="auto",
+                        color_continuous_midpoint=0.0,
+                        labels={"x": "Horizonte (dias)", "y": "Magnitude-alvo", "color": "BSS vs Poisson"},
+                        title=f"Skill vs Poisson — {model_for_heatmap}",
+                    )
+                    professional_layout(fig_heat, 390)
+                    st.plotly_chart(fig_heat, width="stretch")
+                    st.caption("BSS > 0 supera Poisson no cenário; BSS < 0 indica desempenho inferior.")
+
+                with st.expander("Métricas completas por cenário"):
+                    st.dataframe(grid_metrics, width="stretch", hide_index=True)
+        else:
+            st.info("Seleciona a grelha e executa o leaderboard para comparar robustez dos modelos em múltiplas magnitudes e horizontes.")
+
+    assistant_page_details = {}
+    current_single_metrics = st.session_state.get("memoria_v2_arena_metrics")
+    current_global_leaderboard = st.session_state.get("memoria_v2_arena_global_leaderboard")
+    if isinstance(current_single_metrics, pd.DataFrame) and not current_single_metrics.empty:
+        assistant_page_details["model_arena_single"] = current_single_metrics.to_dict(orient="records")
+    if isinstance(current_global_leaderboard, pd.DataFrame) and not current_global_leaderboard.empty:
+        assistant_page_details["model_arena_global"] = current_global_leaderboard.to_dict(orient="records")
+
+elif page == "Scientific Council":
+    render_section(
+        "MEMÓRIA Scientific Council",
+        "Agentes especializados auditam a evidência; o Skeptic tenta falsificar a conclusão antes da síntese final.",
+    )
+    anomaly = assess_anomaly(domain_fp) if not domain_fp.empty else None
+    latest_fp = domain_fp.iloc[-1] if not domain_fp.empty else pd.Series(dtype=object)
+    b_assessment, _b_population = estimate_scientific_b_value(
+        domain_events, magnitude_policy, minimum_events=50
+    )
+    b_est = b_assessment.estimate
+    migration = estimate_migration(domain_events.tail(min(600, len(domain_events))))
+
+    event_dates = pd.to_datetime(domain_events.get("origin_time_utc"), utc=True, errors="coerce").dropna()
+    latest_event_time = event_dates.max() if not event_dates.empty else None
+    evidence_date_utc = latest_event_time.isoformat() if latest_event_time is not None and pd.notna(latest_event_time) else None
+    loaded_sources = sorted(
+        value for value in domain_events.get("source", pd.Series(dtype=str)).dropna().astype(str).unique().tolist()
+        if value.strip()
+    )
+
+    gnss_context = gnss_anomaly_summary(load_gnss_csv(ROOT / "data" / "external" / "gnss.csv"))
+    insar_context = insar_anomaly_summary(load_insar_csv(ROOT / "data" / "external" / "insar.csv"))
+    fault_context = load_faults_geojson(ROOT / "config" / "faults.geojson")
+    fault_names = sorted({str(item.get("name")) for item in fault_context if item.get("name")})
+    arena_single_state = st.session_state.get("memoria_v2_arena_metrics")
+    arena_global_state = st.session_state.get("memoria_v2_arena_global_leaderboard")
+    arena_single_available = isinstance(arena_single_state, pd.DataFrame) and not arena_single_state.empty
+    arena_global_available = isinstance(arena_global_state, pd.DataFrame) and not arena_global_state.empty
+    arena_available = arena_single_available or arena_global_available
+
+    evidence_payload = {
+        "project": "MEMÓRIA v2.0.4 experimental independent project by Gonçalo Pedro",
+        "domain": selected_domain,
+        "catalogue_mode": catalogue_label,
+        "magnitude_policy": magnitude_policy_label,
+        "anomaly": anomaly.to_dict() if anomaly else None,
+        "b_value": {
+            **b_est.__dict__,
+            "scientific_status": b_assessment.status,
+            "population_label": b_assessment.population_label,
+            "validated_population": b_assessment.validated_population,
+            "systematic_uncertainty_dominant": b_assessment.systematic_uncertainty_dominant,
+            "warning": b_assessment.warning,
+        },
+        "migration": migration.__dict__,
+        "model_arena": {
+            "single_scenario": arena_single_state.to_dict(orient="records") if arena_single_available else None,
+            "global_leaderboard": arena_global_state.to_dict(orient="records") if arena_global_available else None,
+        } if arena_available else None,
+        "multimodal_context": {
+            "gnss": gnss_context if gnss_context.get("available") else {"available": False, "status": gnss_context.get("status")},
+            "insar": insar_context if insar_context.get("available") else {"available": False, "status": insar_context.get("status")},
+            "fault_names_loaded": fault_names,
+        },
+        "grounding_manifest": {
+            "evidence_date_utc": evidence_date_utc,
+            "loaded_catalogue_sources": loaded_sources,
+            "fault_context_loaded": bool(fault_context),
+            "fault_names_loaded": fault_names,
+            "gnss_context_loaded": bool(gnss_context.get("available")),
+            "insar_context_loaded": bool(insar_context.get("available")),
+            "model_arena_available": arena_available,
+            "external_knowledge_allowed": False,
+        },
+    }
+    evidence_json = json.dumps(evidence_payload, ensure_ascii=False, indent=2, default=str)
+    evidence_signature = hashlib.sha256(evidence_json.encode("utf-8")).hexdigest()[:16]
+
+    c_date, c_ground, c_sources = st.columns([1.2, 1.2, 1.5])
+    c_date.metric("Data da evidência", evidence_date_utc[:10] if evidence_date_utc else "Indisponível")
+    c_ground.metric("Grounding externo", "Bloqueado")
+    c_sources.metric("Fontes carregadas", ", ".join(loaded_sources) if loaded_sources else "Nenhuma")
+    st.caption(
+        "v2.0.4: grounding semântico + b-value auditado + benchmark multiescenário. Cada agente recebe apenas a evidência necessária à sua especialidade, "
+        "usa um teto próprio de tokens e o Chair recebe um resumo compacto das revisões. Respostas truncadas continuam a ter apenas um retry."
+    )
+    with st.expander("Pacote de evidência auditável", expanded=False):
+        st.code(evidence_json, language="json")
+
+    selected_agents = st.multiselect(
+        "Agentes convocados",
+        list(AGENT_ROLES.keys()),
+        default=list(AGENT_ROLES.keys()),
+    )
+
+    council_model = os.getenv("MEMORIA_COUNCIL_MODEL", "mistral-small-latest").strip() or "mistral-small-latest"
+    budget = estimate_council_budget(selected_agents) if selected_agents else {
+        "normal_requests": 0, "maximum_requests": 0, "normal_completion_ceiling": 0, "retry_completion_ceiling": 0
+    }
+    cache_material = json.dumps(
+        {
+            "version": "v2.0.4-scientific-robustness-v1",
+            "evidence": evidence_signature,
+            "agents": selected_agents,
+            "model": council_model,
+        },
+        sort_keys=True,
+        ensure_ascii=False,
+    )
+    council_cache_key = hashlib.sha256(cache_material.encode("utf-8")).hexdigest()
+    shared_council_cache = _scientific_council_shared_cache()
+    cached_council = shared_council_cache.get(council_cache_key)
+
+    max_api_calls_session = _runtime_int("MEMORIA_COUNCIL_MAX_API_CALLS_SESSION", 16, minimum=1, maximum=200)
+    cooldown_seconds = _runtime_int("MEMORIA_COUNCIL_COOLDOWN_SECONDS", 30, minimum=0, maximum=3600)
+    used_api_calls_session = int(st.session_state.get("memoria_council_api_calls_session", 0))
+    remaining_api_calls = max(0, max_api_calls_session - used_api_calls_session)
+    last_fresh_run = float(st.session_state.get("memoria_council_last_fresh_run", 0.0))
+    cooldown_remaining = max(0, int(round(cooldown_seconds - (time.time() - last_fresh_run)))) if last_fresh_run else 0
+
+    b1, b2, b3, b4 = st.columns(4)
+    b1.metric("Pedidos normais", budget["normal_requests"])
+    b2.metric("Teto output", f"{budget['normal_completion_ceiling']:,} tok")
+    b3.metric("Cache", "HIT · 0 API" if cached_council is not None else "MISS")
+    b4.metric("API sessão", f"{remaining_api_calls}/{max_api_calls_session}")
+    st.caption(
+        "Os tetos de output são máximos, não consumo garantido. O contexto é compactado por agente e as chamadas são sequenciais para reduzir bursts de rate-limit. "
+        f"Em caso extremo de retry, o teto teórico de output é {budget['retry_completion_ceiling']:,} tokens."
+    )
+
+    with st.expander("API Budget Guard", expanded=False):
+        st.markdown(
+            f"**Modelo:** `{council_model}`  \n"
+            f"**Pedidos esperados:** {budget['normal_requests']}  \n"
+            f"**Pedidos máximos com retry lógico:** {budget['maximum_requests']}  \n"
+            f"**Limite de pedidos nesta sessão:** {max_api_calls_session}  \n"
+            f"**Cooldown entre novas avaliações:** {cooldown_seconds}s  \n"
+            "**Cache:** partilhada no processo Streamlit por evidence hash + agentes + modelo; nunca guarda a API key."
+        )
+
+    key = _mistral_key_from_runtime()
+    fresh_run_blocked = cached_council is None and (
+        not key
+        or remaining_api_calls < budget["normal_requests"]
+        or cooldown_remaining > 0
+    )
+    if cached_council is None and not key:
+        st.warning("Configura MISTRAL_API_KEY no assistente ou nos Secrets para executar uma nova revisão. Uma revisão em cache pode ser reutilizada sem chave.")
+    elif cached_council is None and remaining_api_calls < budget["normal_requests"]:
+        st.warning("API Budget Guard: o limite desta sessão não permite outra execução completa com os agentes selecionados.")
+    elif cached_council is None and cooldown_remaining > 0:
+        st.info(f"Cooldown de proteção: aguarda cerca de {cooldown_remaining}s antes de uma nova convocação.")
+
+    button_label = "Reutilizar Scientific Council em cache" if cached_council is not None else "Convocar Scientific Council"
+    if st.button(button_label, type="primary", disabled=not selected_agents or fresh_run_blocked):
+        if cached_council is not None:
+            council = cached_council
+            st.session_state["memoria_v2_council"] = council
+            st.session_state["memoria_v2_council_signature"] = council_cache_key
+            st.session_state["memoria_v2_council_cache_hit"] = True
+            st.success("Scientific Council recuperado da cache: 0 novas chamadas Mistral.")
+        else:
+            config = MistralAssistantConfig(
+                api_key=key,
+                model=council_model,
+                max_tokens=900,
+                temperature=0.05,
+                max_retries=1,
+            )
+            try:
+                with st.spinner("Os agentes estão a rever a evidência de forma sequencial, compacta e grounded..."):
+                    council = run_scientific_council(
+                        MistralAssistantClient(config),
+                        evidence_json,
+                        selected_agents,
+                    )
+                # Bound the process-local cache so a public deployment cannot grow it indefinitely.
+                if len(shared_council_cache) >= 32 and council_cache_key not in shared_council_cache:
+                    shared_council_cache.pop(next(iter(shared_council_cache)))
+                shared_council_cache[council_cache_key] = council
+                st.session_state["memoria_v2_council"] = council
+                st.session_state["memoria_v2_council_signature"] = council_cache_key
+                st.session_state["memoria_v2_council_cache_hit"] = False
+                st.session_state["memoria_council_api_calls_session"] = used_api_calls_session + council.api_requests
+                st.session_state["memoria_council_last_fresh_run"] = time.time()
+            except MistralAssistantError as error:
+                st.error(str(error))
+
+    council = st.session_state.get("memoria_v2_council")
+    council_signature = st.session_state.get("memoria_v2_council_signature")
+    cache_hit = bool(st.session_state.get("memoria_v2_council_cache_hit", False))
+    if council and council_signature != council_cache_key:
+        st.info("A evidência, os agentes ou o modelo mudaram desde a última convocação. Executa/reutiliza a revisão correspondente para evitar mostrar uma síntese desatualizada.")
+        council = None
+
+    if council:
+        grounded_count = sum(1 for review in council.reviews if review.grounding_passed)
+        st.success(f"Grounding verificado em {grounded_count}/{len(council.reviews)} revisores. Data da evidência: {council.evidence_date_utc or 'indisponível'}.")
+        u1, u2, u3, u4 = st.columns(4)
+        u1.metric("Chamadas Mistral", "0 · cache" if cache_hit else council.api_requests)
+        u2.metric("Input tokens", f"{council.prompt_tokens:,}" if council.prompt_tokens else "n/d")
+        u3.metric("Output tokens", f"{council.completion_tokens:,}" if council.completion_tokens else "n/d")
+        u4.metric("Total tokens", f"{council.total_tokens:,}" if council.total_tokens else "n/d")
+        for review in council.reviews:
+            status = "Grounded ✓" if review.grounding_passed else "Grounding rejeitado ⚠"
+            with st.expander(f"{review.agent} · {status}", expanded=False):
+                usage_text = (
+                    f" · Tokens: {review.total_tokens:,} (in {review.prompt_tokens:,} / out {review.completion_tokens:,})"
+                    if review.total_tokens else ""
+                )
+                st.caption(f"Tentativas: {review.attempts} · API calls: {review.api_requests} · Modelo: {review.model}{usage_text}")
+                if review.grounding_issues:
+                    st.warning("; ".join(review.grounding_issues))
+                st.markdown(review.text)
+        st.markdown("### Consensus / Chair")
+        chair_usage = (
+            f" · Tokens: {council.synthesis.total_tokens:,} (in {council.synthesis.prompt_tokens:,} / out {council.synthesis.completion_tokens:,})"
+            if council.synthesis.total_tokens else ""
+        )
+        st.caption(
+            f"Data efetiva da evidência: {council.evidence_date_utc or 'indisponível'} · "
+            f"API calls: {council.synthesis.api_requests}{chair_usage}"
+        )
+        if council.synthesis.grounding_passed:
+            st.info(council.synthesis.text)
+        else:
+            st.warning(council.synthesis.text)
+        assistant_page_details = {
+            "scientific_council": {review.agent: review.text for review in council.reviews},
+            "chair": council.synthesis.text,
+            "evidence_date_utc": council.evidence_date_utc,
+            "grounding_verified": all(review.grounding_passed for review in council.reviews) and council.synthesis.grounding_passed,
+            "api_usage": {
+                "requests": 0 if cache_hit else council.api_requests,
+                "prompt_tokens": 0 if cache_hit else council.prompt_tokens,
+                "completion_tokens": 0 if cache_hit else council.completion_tokens,
+                "total_tokens": 0 if cache_hit else council.total_tokens,
+                "cache_hit": cache_hit,
+            },
+        }
+    else:
+        st.markdown(
+            """<div class="mem-note"><b>Conselho local:</b> sem executar LLM, o MEMÓRIA continua a apresentar os detetores, incerteza, b-value, migração e Model Arena. Os agentes são uma camada de revisão — não participam nos cálculos.</div>""",
+            unsafe_allow_html=True,
+        )
 
 else:
     render_section(
