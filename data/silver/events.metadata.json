@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "generated_at_utc": "2026-08-07T05:05:02.436480+00:00",
+=======
+  "generated_at_utc": "2026-08-07T22:11:31.775634+00:00",
+>>>>>>> Stashed changes
   "row_count": 95840,
   "columns": [
     "event_id_memoria",
