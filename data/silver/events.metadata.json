@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-21T04:03:27.732834+00:00",
-  "row_count": 101388,
+  "generated_at_utc": "2026-08-22T03:59:20.623220+00:00",
+  "row_count": 101781,
   "columns": [
     "event_id_memoria",
     "source_event_id",
@@ -43,7 +43,7 @@
   "parquet_written": true,
   "source_counts": {
     "ISC": 87864,
-    "IPMA": 13442,
+    "IPMA": 13835,
     "AHEAD": 82
   }
 }
