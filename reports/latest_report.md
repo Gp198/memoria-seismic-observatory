@@ -2,8 +2,8 @@
 
 ## Estado do catálogo
 
-- Eventos preferenciais: **87,511**
-- Período: **1693-06-07 00:00:00+00:00** a **2026-09-07 06:13:09+00:00**
+- Eventos preferenciais: **87,517**
+- Período: **1693-06-07 00:00:00+00:00** a **2026-09-07 15:50:30+00:00**
 - Fontes: **ISC, IPMA, AHEAD**
 
 ### Eventos por fonte
@@ -11,14 +11,14 @@
 | Fonte | Eventos |
 |---|---:|
 | ISC | 86351 |
-| IPMA | 1078 |
+| IPMA | 1084 |
 | AHEAD | 82 |
 
 ### Eventos por domínio
 
 | Domínio | Eventos |
 |---|---:|
-| Fora dos domínios piloto | 50095 |
+| Fora dos domínios piloto | 50101 |
 | Margem Sudoeste Ibérica | 35109 |
 | Vale Inferior do Tejo | 2307 |
 
@@ -26,7 +26,7 @@
 
 | Domínio | Amostra | Mc estimada |
 |---|---:|---:|
-| Fora dos domínios piloto | 44215 | 1.45 |
+| Fora dos domínios piloto | 44221 | 1.45 |
 | Margem Sudoeste Ibérica | 33301 | 1.45 |
 | Vale Inferior do Tejo | 2252 | 1.05 |
 
@@ -49,7 +49,7 @@
 | declustered | Margem Sudoeste Ibérica | 30 | 2026-09-02 00:00:00+00:00 | 168 | 41 | Período instrumental contemporâneo | 1.5 | 3.4 | 0.25773195876288657 | 970.0 | 44.36558933906436 | 0.15206847036001947 | 0.4020065108798552 |
 | declustered | Fora dos domínios piloto | 30 | 2026-09-02 00:00:00+00:00 | 136 | 103 | Período instrumental contemporâneo | 1.5 | 4.9 | 0.7185567010309278 | 970.0 | 6.937763779213632 | 0.36113719591221494 | 0.9201993754523601 |
 | declustered | Margem Sudoeste Ibérica | 90 | 2026-09-06 00:00:00+00:00 | 492 | 127 | Período instrumental contemporâneo | 1.5 | 4.2 | 0.2234927234927235 | 962.0 | 6.849199100001963 | 0.054091385110833334 | 0.5916079902790922 |
-| complete | Fora dos domínios piloto | 90 | 2026-09-06 00:00:00+00:00 | 541 | 422 | Período instrumental contemporâneo | 1.5 | 4.9 | 0.7546777546777547 | 962.0 | 4.834170854271361 | 0.33418585520433475 | 0.9496334927899931 |
+| complete | Fora dos domínios piloto | 90 | 2026-09-06 00:00:00+00:00 | 542 | 423 | Período instrumental contemporâneo | 1.5 | 4.9 | 0.7557172557172557 | 962.0 | 4.834170854271361 | 0.33497784649157886 | 0.9499999478210932 |
 | declustered | Fora dos domínios piloto | 90 | 2026-09-06 00:00:00+00:00 | 409 | 295 | Período instrumental contemporâneo | 1.5 | 4.9 | 0.7130977130977131 | 962.0 | 4.834170854271361 | 0.30331593314133887 | 0.9341655621192213 |
 | complete | Margem Sudoeste Ibérica | 90 | 2026-09-06 00:00:00+00:00 | 589 | 167 | Período instrumental contemporâneo | 1.5 | 4.2 | 0.45634095634095634 | 962.0 | 9.513498056438621 | 0.20146663837012369 | 0.736331704100383 |
 
