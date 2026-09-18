@@ -2,8 +2,8 @@
 
 ## Estado do catálogo
 
-- Eventos preferenciais: **87,608**
-- Período: **1693-06-07 00:00:00+00:00** a **2026-09-17 02:53:05+00:00**
+- Eventos preferenciais: **87,618**
+- Período: **1693-06-07 00:00:00+00:00** a **2026-09-18 06:16:57+00:00**
 - Fontes: **ISC, IPMA, AHEAD**
 
 ### Eventos por fonte
@@ -11,23 +11,23 @@
 | Fonte | Eventos |
 |---|---:|
 | ISC | 86351 |
-| IPMA | 1175 |
+| IPMA | 1185 |
 | AHEAD | 82 |
 
 ### Eventos por domínio
 
 | Domínio | Eventos |
 |---|---:|
-| Fora dos domínios piloto | 50151 |
-| Margem Sudoeste Ibérica | 35149 |
+| Fora dos domínios piloto | 50157 |
+| Margem Sudoeste Ibérica | 35153 |
 | Vale Inferior do Tejo | 2308 |
 
 ### Magnitude de completude
 
 | Domínio | Amostra | Mc estimada |
 |---|---:|---:|
-| Fora dos domínios piloto | 44271 | 1.45 |
-| Margem Sudoeste Ibérica | 33337 | 1.45 |
+| Fora dos domínios piloto | 44277 | 1.45 |
+| Margem Sudoeste Ibérica | 33341 | 1.45 |
 | Vale Inferior do Tejo | 2253 | 1.05 |
 
 ## Fingerprints mais recentes
@@ -51,7 +51,7 @@
 | declustered | Margem Sudoeste Ibérica | 30 | 2026-09-16 00:00:00+00:00 | 140 | 33 | Período instrumental contemporâneo | 1.5 | 3.3 | 0.08641975308641975 | 972.0 | 44.46043559699566 | 0.03351612605339442 | 0.2051076110165741 |
 | complete | Fora dos domínios piloto | 30 | 2026-09-16 00:00:00+00:00 | 207 | 166 | Período instrumental contemporâneo | 1.5 | 4.7 | 0.8281893004115226 | 972.0 | 14.56595404092452 | 0.5742648667043017 | 0.9451335194192602 |
 | complete | Margem Sudoeste Ibérica | 30 | 2026-09-16 00:00:00+00:00 | 171 | 41 | Período instrumental contemporâneo | 1.5 | 3.3 | 0.12139917695473251 | 972.0 | 54.8991311840438 | 0.05904732476382765 | 0.2332697510751239 |
-| declustered | Fora dos domínios piloto | 30 | 2026-09-16 00:00:00+00:00 | 134 | 95 | Período instrumental contemporâneo | 1.5 | 3.8 | 0.6872427983539094 | 972.0 | 6.951985945096872 | 0.3361029097203038 | 0.905100770980904 |
+| declustered | Fora dos domínios piloto | 30 | 2026-09-16 00:00:00+00:00 | 134 | 95 | Período instrumental contemporâneo | 1.5 | 3.5 | 0.6872427983539094 | 972.0 | 6.951985945096872 | 0.3361029097203038 | 0.905100770980904 |
 
 ## Limite de comunicação
 
