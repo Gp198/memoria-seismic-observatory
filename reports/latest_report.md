@@ -2,8 +2,8 @@
 
 ## Estado do catálogo
 
-- Eventos preferenciais: **88,102**
-- Período: **1693-06-07 00:00:00+00:00** a **2026-10-23 07:19:54+00:00**
+- Eventos preferenciais: **88,121**
+- Período: **1693-06-07 00:00:00+00:00** a **2026-10-24 05:48:43+00:00**
 - Fontes: **ISC, IPMA, AHEAD**
 
 ### Eventos por fonte
@@ -11,23 +11,23 @@
 | Fonte | Eventos |
 |---|---:|
 | ISC | 86351 |
-| IPMA | 1669 |
+| IPMA | 1688 |
 | AHEAD | 82 |
 
 ### Eventos por domínio
 
 | Domínio | Eventos |
 |---|---:|
-| Fora dos domínios piloto | 50383 |
-| Margem Sudoeste Ibérica | 35394 |
+| Fora dos domínios piloto | 50397 |
+| Margem Sudoeste Ibérica | 35399 |
 | Vale Inferior do Tejo | 2325 |
 
 ### Magnitude de completude
 
 | Domínio | Amostra | Mc estimada |
 |---|---:|---:|
-| Fora dos domínios piloto | 44501 | 1.45 |
-| Margem Sudoeste Ibérica | 33574 | 1.45 |
+| Fora dos domínios piloto | 44515 | 1.45 |
+| Margem Sudoeste Ibérica | 33579 | 1.45 |
 | Vale Inferior do Tejo | 2270 | 1.05 |
 
 ## Fingerprints mais recentes
@@ -48,10 +48,10 @@
 | complete | Margem Sudoeste Ibérica | 365 | 2026-10-20 00:00:00+00:00 | 1797 | 665 | Período instrumental contemporâneo | 1.5 | 4.5 | 0.36706135629709363 | 929.0 | 4.668341708542718 | 0.09771273112418288 | 0.7564312025806808 |
 | complete | Fora dos domínios piloto | 365 | 2026-10-20 00:00:00+00:00 | 1284 | 992 | Período instrumental contemporâneo | 1.5 | 5.3 | 0.48116254036598494 | 929.0 | 4.668341708542718 | 0.15385944662478712 | 0.8254726897301531 |
 | declustered | Margem Sudoeste Ibérica | 365 | 2026-10-20 00:00:00+00:00 | 1615 | 596 | Período instrumental contemporâneo | 1.5 | 4.5 | 0.47255113024757806 | 929.0 | 4.668341708542718 | 0.14928236538652634 | 0.8206016047306721 |
-| complete | Margem Sudoeste Ibérica | 30 | 2026-10-21 00:00:00+00:00 | 213 | 54 | Período instrumental contemporâneo | 1.5 | 2.6 | 0.4165813715455476 | 977.0 | 54.981959972959054 | 0.29592797859015063 | 0.5481300586765744 |
-| declustered | Fora dos domínios piloto | 30 | 2026-10-21 00:00:00+00:00 | 125 | 82 | Período instrumental contemporâneo | 1.5 | 5.3 | 0.617195496417605 | 977.0 | 7.002128809420991 | 0.2834051606415273 | 0.8679502744399512 |
+| complete | Margem Sudoeste Ibérica | 30 | 2026-10-21 00:00:00+00:00 | 214 | 54 | Período instrumental contemporâneo | 1.5 | 2.6 | 0.4165813715455476 | 977.0 | 54.981959972959054 | 0.29592797859015063 | 0.5481300586765744 |
+| declustered | Fora dos domínios piloto | 30 | 2026-10-21 00:00:00+00:00 | 125 | 82 | Período instrumental contemporâneo | 1.5 | 5.3 | 0.617195496417605 | 977.0 | 7.002391606497722 | 0.28340977985922444 | 0.8679476675611358 |
 | complete | Fora dos domínios piloto | 30 | 2026-10-21 00:00:00+00:00 | 183 | 119 | Período instrumental contemporâneo | 1.5 | 5.3 | 0.6929375639713409 | 977.0 | 14.69216065376327 | 0.4391693966706891 | 0.8667254869400751 |
-| declustered | Margem Sudoeste Ibérica | 30 | 2026-10-21 00:00:00+00:00 | 192 | 50 | Período instrumental contemporâneo | 1.5 | 2.6 | 0.48925281473899696 | 977.0 | 44.621376033410186 | 0.3493634866620698 | 0.6308459172543284 |
+| declustered | Margem Sudoeste Ibérica | 30 | 2026-10-21 00:00:00+00:00 | 193 | 50 | Período instrumental contemporâneo | 1.5 | 2.6 | 0.48925281473899696 | 977.0 | 44.621376033410186 | 0.3493634866620698 | 0.6308459172543284 |
 
 ## Limite de comunicação
 
