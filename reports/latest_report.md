@@ -2,8 +2,8 @@
 
 ## Estado do catálogo
 
-- Eventos preferenciais: **88,299**
-- Período: **1693-06-07 00:00:00+00:00** a **2026-11-05 06:30:43+00:00**
+- Eventos preferenciais: **88,302**
+- Período: **1693-06-07 00:00:00+00:00** a **2026-11-06 05:55:59+00:00**
 - Fontes: **ISC, IPMA, AHEAD**
 
 ### Eventos por fonte
@@ -11,23 +11,23 @@
 | Fonte | Eventos |
 |---|---:|
 | ISC | 86351 |
-| IPMA | 1866 |
+| IPMA | 1869 |
 | AHEAD | 82 |
 
 ### Eventos por domínio
 
 | Domínio | Eventos |
 |---|---:|
-| Fora dos domínios piloto | 50500 |
-| Margem Sudoeste Ibérica | 35472 |
+| Fora dos domínios piloto | 50501 |
+| Margem Sudoeste Ibérica | 35474 |
 | Vale Inferior do Tejo | 2327 |
 
 ### Magnitude de completude
 
 | Domínio | Amostra | Mc estimada |
 |---|---:|---:|
-| Fora dos domínios piloto | 44618 | 1.45 |
-| Margem Sudoeste Ibérica | 33652 | 1.45 |
+| Fora dos domínios piloto | 44619 | 1.45 |
+| Margem Sudoeste Ibérica | 33654 | 1.45 |
 | Vale Inferior do Tejo | 2272 | 1.05 |
 
 ## Fingerprints mais recentes
